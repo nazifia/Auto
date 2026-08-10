@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Login with explicit goals (skips the task planner and its LLM call)",
+        "url": "https://www.pythonanywhere.com/login/",
+        "task": "Keep the web app alive",
+        "goals": [
+            { "goal": "Log in", "done": "Dashboard is visible" },
+            { "goal": "Open the Web tab", "done": "Web app settings are visible" },
+            { "goal": "Click Run until 1 month from today", "done": "Expiry date moved forward" }
+        ],
+        "variables": {
+            "USERNAME": "${PA_USERNAME}",
+            "PASSWORD": "${PA_PASSWORD}"
+        }
+    },
+    {
+        "name": "Session reuse: saves cookies after a successful run, so later runs skip the login goal",
+        "url": "https://www.pythonanywhere.com/login/",
+        "task": "Keep the web app alive",
+        "session": true,
+        "variables": {
+            "USERNAME": "${PA_USERNAME}",
+            "PASSWORD": "${PA_PASSWORD}"
+        }
+    },
+    {
+        "name": "Mixed plan: an API call as one step, browser work as the rest",
+        "url": "https://example.com",
+        "task": "Fetch the ticket then act on it",
+        "goals": [
+            {
+                "goal": "Fetch the next ticket",
+                "plugin": "api",
+                "request": {
+                    "method": "GET",
+                    "url": "http://localhost:5678/webhook/next-ticket"
+                },
+                "saveAs": "TICKET"
+            },
+            { "goal": "Confirm the page loaded", "done": "Example Domain" }
+        ]
+    },
+    {
+        "name": "Search, no credentials needed",
+        "url": "https://duckduckgo.com",
+        "task": "Search for playwright documentation and open the first result"
+    },
+    {
+        "name": "Headless run with a per-job browser override",
+        "url": "https://example.com",
+        "task": "Confirm the page loaded and finish",
+        "browser": { "headless": true, "slowMo": 0 }
+    }
+]

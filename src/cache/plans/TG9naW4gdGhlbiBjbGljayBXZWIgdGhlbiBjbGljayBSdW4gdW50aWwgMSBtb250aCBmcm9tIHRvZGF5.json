@@ -1,0 +1,11 @@
+[
+    {
+        "goal": "Login"
+    },
+    {
+        "goal": "Open Web tab"
+    },
+    {
+        "goal": "Click Run until 1 month from today"
+    }
+]

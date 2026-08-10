@@ -1,0 +1,26 @@
+{
+    "www.pythonanywhere.com": {
+        "visits": 237,
+        "goals": 62,
+        "failures": 2,
+        "llmCalls": 116,
+        "cacheHits": 42,
+        "lastVisit": "2026-08-10T23:38:37.338Z"
+    },
+    "example.com": {
+        "visits": 3,
+        "goals": 2,
+        "failures": 0,
+        "llmCalls": 3,
+        "cacheHits": 0,
+        "lastVisit": "2026-08-05T19:03:10.715Z"
+    },
+    "www.iana.org": {
+        "visits": 1,
+        "goals": 0,
+        "failures": 0,
+        "llmCalls": 0,
+        "cacheHits": 0,
+        "lastVisit": "2026-08-05T18:40:17.713Z"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "USERNAME": {
+        "placeholder": "Username or email address",
+        "role": "input",
+        "fingerprint": "input|id:id_auth-username"
+    },
+    "PASSWORD": {
+        "placeholder": "Password",
+        "role": "input",
+        "fingerprint": "input|id:id_auth-password"
+    },
+    "Log in": {
+        "role": "button",
+        "fingerprint": "button|id:id_next"
+    },
+    "Web": {
+        "role": "link",
+        "fingerprint": "link|id:id_web_app_link"
+    },
+    "Run until 1 month from today": {
+        "role": "button",
+        "fingerprint": "button|text:run until 1 month from today"
+    }
+}

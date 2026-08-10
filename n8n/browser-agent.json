@@ -1,0 +1,202 @@
+{
+  "id": "browserAgentRunJob",
+  "name": "Browser Agent — run job",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d51",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-160, 300]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d52",
+      "name": "Every day 07:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-160, 480],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "run-browser-job",
+        "options": {}
+      },
+      "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d58",
+      "name": "Webhook trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-160, 120],
+      "webhookId": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d58",
+      "notesInFlow": true,
+      "notes": "POST /webhook/run-browser-job to start a run from anywhere."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:3001/run",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"url\": \"https://www.pythonanywhere.com/login/\",\n  \"task\": \"Login then click Web then click Run until 1 month from today\",\n  \"session\": true,\n  \"variables\": {\n    \"USERNAME\": \"${PA_USERNAME}\",\n    \"PASSWORD\": \"${PA_PASSWORD}\"\n  },\n  \"callbackUrl\": \"{{ $execution.resumeUrl }}\"\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d53",
+      "name": "Start job",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [80, 380],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "agent-token",
+          "name": "Agent Token"
+        }
+      },
+      "notesInFlow": true,
+      "notes": "202 + run id. Credentials stay in the agent's .env — ${PA_USERNAME} is resolved there, never by n8n."
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "httpMethod": "POST",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d54",
+      "name": "Wait for result",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [300, 380],
+      "webhookId": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d54",
+      "notesInFlow": true,
+      "notes": "Parks the execution. The agent POSTs the result to $execution.resumeUrl."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0a1b2c3d-4e5f-6071-8293-a4b5c6d7e8f9",
+              "leftValue": "={{ $json.body.ok }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d55",
+      "name": "Job succeeded?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [520, 380]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1a2b3c4d-5e6f-7081-92a3-b4c5d6e7f801",
+              "name": "summary",
+              "value": "={{ $json.body.results.map(r => r.goals.map(g => (g.ok ? '✓ ' : '✗ ') + g.goal + (g.note ? ' — ' + g.note : '')).join('\\n')).join('\\n') }}",
+              "type": "string"
+            },
+            {
+              "id": "1a2b3c4d-5e6f-7081-92a3-b4c5d6e7f802",
+              "name": "steps",
+              "value": "={{ $json.body.results.reduce((total, r) => total + (r.steps || 0), 0) }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d56",
+      "name": "Summarise goals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [740, 260],
+      "notesInFlow": true,
+      "notes": "Swap for Slack / Gmail / Sheets."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1a2b3c4d-5e6f-7081-92a3-b4c5d6e7f803",
+              "name": "error",
+              "value": "={{ $json.body.error || $json.body.results.filter(r => !r.ok).map(r => r.error || r.goals.filter(g => !g.ok).map(g => g.goal + ': ' + (g.note || 'failed')).join('; ')).join(' | ') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d57",
+      "name": "Report failure",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [740, 480],
+      "notesInFlow": true,
+      "notes": "Wire to an alert. A 429 from /run means the queue is full — retry later."
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{ "node": "Start job", "type": "main", "index": 0 }]]
+    },
+    "Every day 07:00": {
+      "main": [[{ "node": "Start job", "type": "main", "index": 0 }]]
+    },
+    "Webhook trigger": {
+      "main": [[{ "node": "Start job", "type": "main", "index": 0 }]]
+    },
+    "Start job": {
+      "main": [[{ "node": "Wait for result", "type": "main", "index": 0 }]]
+    },
+    "Wait for result": {
+      "main": [[{ "node": "Job succeeded?", "type": "main", "index": 0 }]]
+    },
+    "Job succeeded?": {
+      "main": [
+        [{ "node": "Summarise goals", "type": "main", "index": 0 }],
+        [{ "node": "Report failure", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "executionTimeout": 3600
+  },
+  "pinData": {}
+}

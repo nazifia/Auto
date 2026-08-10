@@ -1,0 +1,11 @@
+node_modules/
+
+# Real credentials: API key, site passwords, the inbound agent token.
+.env
+
+# storageState files — these are live session cookies, i.e. credentials.
+src/memory/sessions/
+
+# Run artifacts.
+screenshots/
+logs/

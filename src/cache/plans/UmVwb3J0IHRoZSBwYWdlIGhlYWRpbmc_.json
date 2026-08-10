@@ -1,0 +1,6 @@
+[
+    {
+        "goal": "Locate and report the main heading (<h1>) of the current page",
+        "done": "Heading text is captured and displayed"
+    }
+]

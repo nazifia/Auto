@@ -1,0 +1,46 @@
+{
+    "www.pythonanywhere.com": {
+        "input|id:id_auth-username": {
+            "success": 25,
+            "fail": 0,
+            "last": "2026-08-10T23:22:58.606Z"
+        },
+        "input|id:id_auth-password": {
+            "success": 25,
+            "fail": 1,
+            "last": "2026-08-10T23:23:00.695Z"
+        },
+        "button|id:id_next": {
+            "success": 25,
+            "fail": 0,
+            "last": "2026-08-10T23:23:08.175Z"
+        },
+        "link|text:open web tab": {
+            "success": 37,
+            "fail": 0,
+            "last": "2026-08-10T23:26:59.414Z"
+        },
+        "link|id:id_web_app_link": {
+            "success": 17,
+            "fail": 1,
+            "last": "2026-08-10T23:28:13.397Z"
+        },
+        "button|text:run until 1 month from today": {
+            "success": 30,
+            "fail": 0,
+            "last": "2026-08-10T23:29:30.319Z"
+        },
+        "link|text:account": {
+            "success": 1,
+            "fail": 0,
+            "last": "2026-08-10T23:38:38.675Z"
+        }
+    },
+    "example.com": {
+        "link|text:learn more": {
+            "success": 1,
+            "fail": 0,
+            "last": "2026-08-05T18:40:11.662Z"
+        }
+    }
+}

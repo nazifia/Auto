@@ -1,0 +1,41 @@
+{
+    "www.pythonanywhere.com": {
+        "input|id:id_auth-username": {
+            "type": "id",
+            "value": "id_auth-username"
+        },
+        "button|id:id_next": {
+            "type": "id",
+            "value": "id_next"
+        },
+        "link|text:open web tab": {
+            "type": "role",
+            "role": "link",
+            "value": "Open Web tab"
+        },
+        "button|text:run until 1 month from today": {
+            "type": "role",
+            "role": "button",
+            "value": "Run until 1 month from today"
+        },
+        "input|id:id_auth-password": {
+            "type": "id",
+            "value": "id_auth-password"
+        },
+        "link|id:id_web_app_link": {
+            "type": "id",
+            "value": "id_web_app_link"
+        },
+        "link|text:account": {
+            "type": "css",
+            "value": "a"
+        }
+    },
+    "example.com": {
+        "link|text:learn more": {
+            "type": "role",
+            "role": "link",
+            "value": "Learn more"
+        }
+    }
+}

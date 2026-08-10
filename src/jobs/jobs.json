@@ -1,0 +1,17 @@
+[
+    {
+        "name": "PythonAnywhere keep-alive",
+        "url": "https://www.pythonanywhere.com/login/",
+        "task": "Keep the web app alive",
+        "session": true,
+        "goals": [
+            { "goal": "Log in", "done": "Dashboard is visible" },
+            { "goal": "Open the Web tab", "done": "Web app settings are visible" },
+            { "goal": "Click the Run until 3 months from today button", "done": "Expiry date moved forward" }
+        ],
+        "variables": {
+            "USERNAME": "${PA_USERNAME}",
+            "PASSWORD": "${PA_PASSWORD}"
+        }
+    }
+]

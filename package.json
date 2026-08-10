@@ -1,0 +1,21 @@
+{
+  "name": "automation",
+  "version": "1.0.0",
+  "description": "Modular AI browser automation agent",
+  "main": "src/agent.js",
+  "scripts": {
+    "start": "node src/agent.js",
+    "serve": "node src/server.js",
+    "deploy:flow": "node scripts/deploy-flow.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.19.0",
+    "dotenv": "^17.4.2",
+    "playwright": "^1.62.1"
+  }
+}

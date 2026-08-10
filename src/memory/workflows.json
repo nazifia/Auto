@@ -1,0 +1,92 @@
+{
+    "www.pythonanywhere.com::1e3zq05": {
+        "host": "www.pythonanywhere.com",
+        "task": "Login then click Web then click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Login"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Login"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Login"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open Web tab"
+            }
+        ],
+        "runs": 7,
+        "success": 7,
+        "updated": "2026-08-10T22:50:48.637Z"
+    },
+    "www.pythonanywhere.com::1xx30fl": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as nazifi and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            }
+        ],
+        "runs": 3,
+        "success": 3,
+        "updated": "2026-08-10T22:56:17.798Z"
+    }
+}
