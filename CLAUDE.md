@@ -68,14 +68,28 @@ Auth is the `x-auth-token` header matched against `AGENT_TOKEN`.
 New workflow = copy `n8n/browser-agent.json`, change the `Start job` node's
 `jsonBody` and the trigger, then `npm run deploy:flow <file>`.
 
+The `browser-agent` flow runs itself daily from its `Every day 07:00 UTC` node.
+The container sets no timezone, so n8n schedules in UTC, and the agent has to be
+listening when it fires. Both halves run as Windows services, installed elevated
+by `scripts/install-service.ps1` (`N8NBrowserAgent`, this project on 3001) and
+`scripts/install-n8n-service.ps1` (`N8N`, the npm package on 5678, data in
+`C:\ProgramData\n8n\.n8n`). Docker is no longer in the chain — Docker Desktop
+only starts at user logon, which a scheduled run cannot rely on. Details and
+the migration notes are in `n8n/README.md`.
+
 ### Gotchas that cost real time
 
 - The Wait node's resume webhook defaults to **GET**; the agent POSTs. Keep
   `httpMethod: "POST"` on it or every callback 404s and the execution hangs.
-- From an n8n container the agent is `http://host.docker.internal:3001`, never
-  `127.0.0.1`. That also means `HOST=0.0.0.0` in `.env` — which exposes `/run`
-  to the LAN, so `AGENT_TOKEN` is mandatory (the server refuses to start
-  without it on a non-local bind).
+- `n8n import:workflow` **deactivates** the workflow it imports. Every import
+  needs `n8n update:workflow --id=<id> --active=true` plus a container restart,
+  or the webhook and the schedule both go silent.
+- n8n and the agent now share a host, so `Start job` posts to
+  `http://127.0.0.1:3001/run`. Move n8n back into a container and that has to
+  become `host.docker.internal` again, together with `HOST=0.0.0.0` — which
+  also puts `/run` on the LAN, where `AGENT_TOKEN` is the only guard (the
+  server refuses to start without it on a non-local bind). On loopback,
+  `HOST=127.0.0.1`, neither applies.
 - `AGENT_TOKEN` (inbound) and `CALLBACK_TOKEN` (outbound) are separate on
   purpose: the callback URL comes from the caller, so the inbound token must
   never be sent out with it. That URL is also an SSRF lever — `/run` will only

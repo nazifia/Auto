@@ -3,9 +3,9 @@
 `browser-agent.json` is an importable workflow:
 
 ```
-Webhook trigger ─┐
-Manual Trigger  ─┼─> Start job ─> Wait for result ─> Job succeeded? ─> Summarise goals
-Every day 07:00 ─┘   (POST /run)   (parks execution)                └─> Report failure
+Webhook trigger     ─┐
+Manual Trigger      ─┼─> Start job ─> Wait for result ─> Job succeeded? ─> Summarise goals
+Every day 07:00 UTC ─┘   (POST /run)   (parks execution)                └─> Report failure
 ```
 
 `Start job` sends `callbackUrl: {{ $execution.resumeUrl }}`. The agent answers `202`
@@ -15,27 +15,95 @@ literally and the agent resolves it from its own `.env`.
 
 ## Setup
 
-1. Agent server: `npm run serve`. `AGENT_TOKEN` and `HOST=0.0.0.0` live in `.env`
-   (the container cannot reach host loopback). Binding `0.0.0.0` exposes `/run`
-   to the LAN — the token is the only thing guarding it.
+1. Agent server: `npm run serve` for a one-off, or the `N8NBrowserAgent` service
+   for a permanent one (see below). `AGENT_TOKEN` and `PORT` live in `.env`.
+   `HOST=127.0.0.1`: n8n is on this host now, so `/run` never needs to leave
+   loopback. Only set `0.0.0.0` if n8n moves back into a container — that puts
+   `/run` on the LAN with `AGENT_TOKEN` as the only guard.
 2. n8n credential — **Header Auth**, name `Agent Token`, header `x-auth-token`,
    value = `AGENT_TOKEN`.
-3. Import: `docker cp browser-agent.json <container>:/tmp/wf.json`
-   then `docker exec <container> n8n import:workflow --input=/tmp/wf.json`,
-   then restart the container so the webhook registers.
+3. Import (elevated, service stopped so sqlite is not locked):
+   `n8n import:workflow --input n8n\browser-agent.json`, then
+   `n8n update:workflow --id browserAgentRunJob --active true`, then start the
+   service again. **`import:workflow` deactivates what it imports** — skip the
+   update step and both the webhook and the schedule go silent.
 4. Fire it: `curl -X POST http://127.0.0.1:5678/webhook/run-browser-job`
 
 Edit the task, url and variables in the `Start job` node's JSON body.
+
+## Running on a schedule
+
+The `Every day 07:00 UTC` trigger is enabled, so the flow runs itself daily.
+Both halves of the chain are Windows services, auto-start, LocalSystem, restart
+on crash — installed from an **elevated** PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\install-service.ps1        # N8NBrowserAgent
+powershell -ExecutionPolicy Bypass -File scripts\install-n8n-service.ps1    # N8N
+```
+
+Both take `-Remove`. `install-service.ps1` also deletes the older
+Startup-folder script, which only ran at logon and would fight the service for
+the port.
+
+| | `N8NBrowserAgent` | `N8N` |
+|---|---|---|
+| runs | `src/server.js` on 3001 | `n8n start` on 5678 |
+| logs | `logs/service.log` | `C:\ProgramData\n8n\logs\n8n.log` |
+| data | this project | `C:\ProgramData\n8n\.n8n` |
+
+**Docker is out of the chain.** n8n used to run in a container, but Docker
+Desktop starts at user *logon* — no logon, no container, no trigger, and the
+agent sat there with nothing calling it. n8n now runs from the npm package
+(`npm install -g n8n@2.32.7`, pinned to the version the container had so the
+sqlite migrations line up). The container's `/home/node/.n8n` was copied whole
+to `C:\ProgramData\n8n\.n8n`, encryption key included, so credentials still
+decrypt. The old container is stopped, not deleted, and its restart policy is
+`no` — it will not come back and fight for 5678.
+
+Because both sides are now on the host, `Start job` posts to
+`http://127.0.0.1:3001/run`. Going back to a container means changing that back
+to `host.docker.internal`.
+
+Four things the installers work around, none of them obvious:
+
+- **nssm.** Windows cannot supervise a plain console program as a service —
+  `sc.exe` expects a binary that answers the SCM, which `node` does not. The
+  scripts install nssm through winget to act as the wrapper. Its output has to
+  be sent to `Out-Null`, or the banner text rides out on the pipeline as the
+  function's return value and the caller tries to execute it as a path.
+- **LocalSystem has its own profile**, so Playwright would hunt for browsers
+  under `C:\Windows\System32\config\systemprofile` and find none. The agent
+  service gets `PLAYWRIGHT_BROWSERS_PATH` pointed at this user's
+  `ms-playwright`.
+- **nvm4w.** `C:\nvm4w\nodejs\node.exe` is a symlink that moves on every
+  `nvm use`. Both services are pinned to the resolved path
+  (`...\nvm\v24.18.0\node.exe`) so switching node versions cannot silently
+  change what runs — re-run the installers after an upgrade.
+- **`N8N_USER_FOLDER` is the parent of `.n8n`**, not `.n8n` itself. Point it at
+  `C:\ProgramData\n8n` and n8n reads `C:\ProgramData\n8n\.n8n`.
+
+First start of the `N8N` service takes several minutes and answers nothing on
+5678 while it runs: the `n8n-nodes-playwright` community node in that data
+folder downloads ~430 MB of browsers into the SYSTEM profile. That is normal
+once, not a hang. Also run the n8n CLI **elevated** — as a normal user it hits
+`EPERM` on files the service wrote as SYSTEM.
+
+`HEADLESS=true` is set for the same unattended reason: a scheduled run has no
+one watching, so it should not throw a browser window onto the desktop.
 
 ## Gotchas hit while wiring this up
 
 - The Wait node's resume webhook defaults to **GET**. The agent POSTs, so
   `httpMethod: POST` is set on that node — without it every callback 404s and
   the execution hangs in `waiting` forever.
-- `import:workflow` overwrites the active flag, so the JSON carries
-  `"active": true`. A restart is still needed for n8n to register the webhook.
-- From Docker, the agent is `http://host.docker.internal:<PORT>`, never `127.0.0.1`.
-  Both workflows point at `:3001` because the ChatGPT desktop app squats on
+- `import:workflow` **deactivates** the workflow it imports, whatever the JSON's
+  `"active"` says. Follow every import with `update:workflow --active true` and
+  a restart, or the webhook is not registered and the schedule never fires.
+- After a restart the webhook takes a few seconds longer to register than
+  `/healthz` takes to answer `200`. A `404` on the first POST is not a failure —
+  retry before concluding the flow is broken.
+- Both workflows point at `:3001` because the ChatGPT desktop app squats on
   `0.0.0.0:3000` here — it holds the port in `Bound` state, so `netstat` shows no
   listener while `listen()` still fails with `EADDRINUSE`. `PORT=3001` in `.env`
   and the `Start job` node's URL have to agree.

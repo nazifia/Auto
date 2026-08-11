@@ -2,11 +2,11 @@
     "www.pythonanywhere.com": {
         "USERNAME": {
             "fingerprint": "input|id:id_auth-username",
-            "count": 25
+            "count": 38
         },
         "PASSWORD": {
             "fingerprint": "input|id:id_auth-password",
-            "count": 25
+            "count": 38
         }
     }
 }

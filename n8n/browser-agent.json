@@ -23,11 +23,12 @@
         }
       },
       "id": "8f1c2b10-0a4d-4d6f-9d21-1b0f2a3c4d52",
-      "name": "Every day 07:00",
+      "name": "Every day 07:00 UTC",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [-160, 480],
-      "disabled": true
+      "notesInFlow": true,
+      "notes": "The container has no TZ set, so n8n schedules in UTC — 07:00 here is 08:00 local."
     },
     {
       "parameters": {
@@ -47,7 +48,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://host.docker.internal:3001/run",
+        "url": "http://127.0.0.1:3002/run",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -174,7 +175,7 @@
     "Manual Trigger": {
       "main": [[{ "node": "Start job", "type": "main", "index": 0 }]]
     },
-    "Every day 07:00": {
+    "Every day 07:00 UTC": {
       "main": [[{ "node": "Start job", "type": "main", "index": 0 }]]
     },
     "Webhook trigger": {
