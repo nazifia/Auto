@@ -168,7 +168,7 @@ Two halves, and only both together put a browser on your screen:
 
 ## Jobs from a Google Sheet
 
-`sheets-credentials.json` is the same flow with a spreadsheet in front:
+`sheets-jobs.json` is the same flow with a spreadsheet in front:
 
 ```
 Read credentials sheet ─> Rows to jobs ─> Start jobs ─> Wait ─> succeeded?
@@ -195,7 +195,7 @@ batch up front rather than running a browser that stalls on the login form.
 
 Setup: create a Google Sheets OAuth2 credential in n8n, open the
 `Read credentials sheet` node, pick it, and set the spreadsheet id. Then
-`npm run deploy:flow n8n/sheets-credentials.json`.
+`npm run deploy:flow n8n/sheets-jobs.json`.
 
 The Wait node here gives up after 2 hours instead of parking forever, so a
 callback that never lands ends up in `Report failures` rather than in a
