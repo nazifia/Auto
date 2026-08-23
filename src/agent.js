@@ -297,6 +297,8 @@ class Agent {
 
                 learner.planned(page.host, plannedResult.source);
 
+                const before = page.signature;
+
                 const result = await this.runPlan({
                     actions: plannedResult.actions,
                     page,
@@ -319,7 +321,7 @@ class Agent {
                         page.host,
                         goal,
                         plannedResult.signature,
-                        !result.error
+                        !result.error && Agent.progressed(result, before)
                     );
 
                 }
@@ -468,6 +470,19 @@ class Agent {
         }
 
         return result;
+
+    }
+
+    // A plan that threw nothing has not therefore worked. One with no "finish"
+    // that also leaves the page signature untouched moved the goal nowhere, and
+    // scoring that as a success is how a plan which can never complete its goal
+    // climbs to a confidence the cache then serves forever — so the LLM never
+    // gets asked for the "finish" the goal actually needs. Idempotent buttons
+    // hit this squarely: the click lands, the DOM keeps the same shape, and the
+    // goal loops until its attempt limit. No progress is a failure.
+    static progressed(result, beforeSignature) {
+
+        return Boolean(result.goalComplete) || result.page?.signature !== beforeSignature;
 
     }
 

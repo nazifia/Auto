@@ -24,6 +24,13 @@ module.exports = {
 
         timeout: num(process.env.TIMEOUT, 30000),
 
+        // Separate from `timeout` because setDefaultTimeout governs element
+        // lookups too: raising one number to survive a slow site would also
+        // make every genuinely missing element take that long to fail. First
+        // navigation to a cold site here has measured ~19s, and headless under
+        // the LocalSystem service is slower still, so 30s is too tight a fit.
+        navigationTimeout: num(process.env.NAVIGATION_TIMEOUT, 60000),
+
         viewport: { width: 1366, height: 768 }
 
     },

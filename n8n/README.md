@@ -34,6 +34,9 @@ Edit the task, url and variables in the `Start job` node's JSON body.
 ## Running on a schedule
 
 The `Every day 07:00 UTC` trigger is enabled, so the flow runs itself daily.
+It fires at 07:00 UTC only because the workflow pins `settings.timezone` to
+`Etc/UTC`; without that, n8n applies its `America/New_York` default and the node
+runs four hours late. Keep that key in any flow copied from this one.
 Both halves of the chain are Windows services, auto-start, LocalSystem, restart
 on crash — installed from an **elevated** PowerShell:
 
@@ -83,17 +86,41 @@ Four things the installers work around, none of them obvious:
 - **`N8N_USER_FOLDER` is the parent of `.n8n`**, not `.n8n` itself. Point it at
   `C:\ProgramData\n8n` and n8n reads `C:\ProgramData\n8n\.n8n`.
 
-First start of the `N8N` service takes several minutes and answers nothing on
-5678 while it runs: the `n8n-nodes-playwright` community node in that data
-folder downloads ~430 MB of browsers into the SYSTEM profile. That is normal
-once, not a hang. Also run the n8n CLI **elevated** — as a normal user it hits
-`EPERM` on files the service wrote as SYSTEM.
+**No community nodes in that data folder.** `n8n-nodes-playwright` and
+`n8n-nodes-browser-use-cloud` were installed there once and both are gone now,
+removed by `scripts/remove-community-nodes.ps1`. The Playwright one is why: it
+requires `scripts/setup-browsers.js` from the top of `Playwright.node.js`, so
+the setup runs when n8n *loads node types*, not when the node executes. Every
+single start deleted and re-copied ~430 MB of browsers, and its `catch` calls
+`process.exit(1)` — from inside the n8n process. Under the service the copy
+source is LocalSystem's `ms-playwright`, the copy failed partway, and n8n
+restarted every ~15 seconds without ever staying bound to 5678. No workflow
+used either node; the browser work belongs to the agent, not to n8n. Reinstall
+one only if a workflow genuinely needs it, and expect that startup cost back.
 
-`HEADLESS=true` is set for the same unattended reason: a scheduled run has no
-one watching, so it should not throw a browser window onto the desktop.
+Also run the n8n CLI **elevated** — as a normal user it hits `EPERM` on files
+the service wrote as SYSTEM.
+
+`HEADLESS=true` is not a preference here, it is load-bearing. LocalSystem runs
+in session 0, which has no desktop, and a headful chromium there does not draw
+an invisible window -- it hangs, and `page.goto` burns its whole timeout on
+every run while the same navigation from a normal user session finishes in a
+few seconds. Set `HEADLESS=false` only for `npm run serve` in your own session.
 
 ## Gotchas hit while wiring this up
 
+- **Editing a workflow is not publishing it.** n8n 2.x keeps a draft in
+  `workflow_entity` and runs the *published version* recorded in
+  `workflow_history`, and the public API's `GET /workflows/{id}` returns the
+  draft -- so the API can report the change you just made while the trigger
+  keeps running the old one. `POST /workflows/{id}/activate` on an already
+  published workflow is a no-op, and `versionId` is read-only, so the API
+  cannot mint a version directly. A `PUT` whose body differs from the current
+  draft does: it bumps `versionId` and republishes. `deploy:flow` therefore
+  silently does nothing if the draft already matches the file -- which is
+  exactly what happens after someone edits the sqlite row by hand. Check
+  `activeVersionId`, then read that version back with
+  `GET /workflows/{id}/{versionId}`, before believing a deploy landed.
 - The Wait node's resume webhook defaults to **GET**. The agent POSTs, so
   `httpMethod: POST` is set on that node — without it every callback 404s and
   the execution hangs in `waiting` forever.
@@ -103,6 +130,14 @@ one watching, so it should not throw a browser window onto the desktop.
 - After a restart the webhook takes a few seconds longer to register than
   `/healthz` takes to answer `200`. A `404` on the first POST is not a failure —
   retry before concluding the flow is broken.
+- **`n8n does not have permission to use port 5678`** with nothing listening on
+  it is Hyper-V, not another process. winnat is handed a block of dynamic TCP
+  ports at boot and the block is re-rolled on every reboot, so a port that
+  worked yesterday can be inside it today — `netsh interface ipv4 show
+  excludedportrange protocol=tcp` lists the ranges. The fix is a persistent
+  single-port exclusion, which takes 5678 out of the pool the lottery draws
+  from while leaving an explicit bind to it legal. winnat must be down to edit
+  the list; `scripts\remove-community-nodes.ps1` does this.
 - Both workflows point at `:3001` because the ChatGPT desktop app squats on
   `0.0.0.0:3000` here — it holds the port in `Bound` state, so `netstat` shows no
   listener while `listen()` still fails with `EADDRINUSE`. `PORT=3001` in `.env`

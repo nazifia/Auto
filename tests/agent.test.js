@@ -11,6 +11,7 @@ const WorkflowMemory = require("../src/memory/workflowMemory");
 const VariableLearning = require("../src/variables/variableLearning");
 const VariableResolver = require("../src/variables/variableResolver");
 const plugins = require("../src/plugins");
+const config = require("../src/config");
 
 const scratch = name => path.join(os.tmpdir(), `agent-unit-${process.pid}-${name}`);
 
@@ -225,5 +226,71 @@ test("agent derives one session file per host", () => {
     );
 
     assert.match(agent.sessionFile("not a url"), /sessions[\\/]default\.json$/);
+
+});
+
+test("a clean plan that moves nothing is scored as a failure, not a success", () => {
+
+    const before = "sig-before";
+
+    // The pythonanywhere case: the click lands, the button is still a button,
+    // and pageSignature is deliberately stable across value changes.
+    assert.equal(
+        Agent.progressed({ goalComplete: false, page: { signature: before } }, before),
+        false,
+        "a click that leaves the page shape identical is not progress"
+    );
+
+    assert.equal(
+        Agent.progressed({ goalComplete: true, page: { signature: before } }, before),
+        true,
+        "a finish is progress even on an unchanged page"
+    );
+
+    assert.equal(
+        Agent.progressed({ goalComplete: false, page: { signature: "sig-after" } }, before),
+        true,
+        "a new page shape is progress even without a finish"
+    );
+
+});
+
+test("repeated no-progress demotes a cached plan below the confidence threshold", () => {
+
+    const PlannerCache = require("../src/memory/plannerCache");
+
+    const cache = new PlannerCache(scratch("planner-cache.json"));
+
+    const host = "www.pythonanywhere.com";
+    const goal = "Click Run until 1 month from today";
+    const signature = "uixk1f";
+
+    cache.save(host, goal, signature, [
+        { action: "click", element: { fingerprint: "button|text:run until 1 month from today" } }
+    ]);
+
+    // What the old scoring did: every clean-but-useless run counted as a win,
+    // so the plan the goal could never complete was the one served forever.
+    for (let round = 0; round < 14; round++) {
+        cache.record(host, goal, signature, true);
+    }
+
+    assert.ok(
+        cache.confidence(host, goal, signature) > config.agent.confidenceThreshold,
+        "a plan scored on 'nothing threw' outranks the threshold"
+    );
+
+    const before = "sig-before";
+
+    const stuck = { goalComplete: false, error: null, page: { signature: before, host } };
+
+    for (let round = 0; round < 3; round++) {
+        cache.record(host, goal, signature, Agent.progressed(stuck, before));
+    }
+
+    assert.ok(
+        cache.confidence(host, goal, signature) < config.agent.confidenceThreshold,
+        "scored on progress instead, it falls below the threshold and the LLM is asked again"
+    );
 
 });

@@ -38,6 +38,8 @@ class Browser {
 
         this.context.setDefaultTimeout(this.options.timeout);
 
+        this.context.setDefaultNavigationTimeout(this.options.navigationTimeout);
+
         this.page = await this.context.newPage();
 
         logger.info("Browser started.");
