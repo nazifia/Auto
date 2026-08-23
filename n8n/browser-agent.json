@@ -26,6 +26,7 @@
       "name": "Every day 07:00 UTC",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
+      "disabled": true,
       "position": [-160, 480],
       "notesInFlow": true,
       "notes": "The container has no TZ set, so n8n schedules in UTC — 07:00 here is 08:00 local."
@@ -53,7 +54,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"url\": \"https://www.pythonanywhere.com/login/\",\n  \"task\": \"Login then click Web then click Run until 1 month from today\",\n  \"session\": true,\n  \"variables\": {\n    \"USERNAME\": \"${PA_USERNAME}\",\n    \"PASSWORD\": \"${PA_PASSWORD}\"\n  },\n  \"callbackUrl\": \"{{ $execution.resumeUrl }}\"\n}",
+        "jsonBody": "={\n  \"url\": \"https://www.pythonanywhere.com/login/\",\n  \"task\": \"Login then click Web then click Run until 1 month from today\",\n  \"session\": true,\n  \"browser\": { \"headless\": false },\n  \"variables\": {\n    \"USERNAME\": \"${PA_USERNAME}\",\n    \"PASSWORD\": \"${PA_PASSWORD}\"\n  },\n  \"callbackUrl\": \"{{ $execution.resumeUrl }}\"\n}",
         "options": {
           "timeout": 30000
         }

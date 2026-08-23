@@ -101,11 +101,31 @@ one only if a workflow genuinely needs it, and expect that startup cost back.
 Also run the n8n CLI **elevated** — as a normal user it hits `EPERM` on files
 the service wrote as SYSTEM.
 
-`HEADLESS=true` is not a preference here, it is load-bearing. LocalSystem runs
-in session 0, which has no desktop, and a headful chromium there does not draw
-an invisible window -- it hangs, and `page.goto` burns its whole timeout on
-every run while the same navigation from a normal user session finishes in a
-few seconds. Set `HEADLESS=false` only for `npm run serve` in your own session.
+`HEADLESS=true` is not a preference here, it is load-bearing *while the agent
+is a service*. LocalSystem runs in session 0, which has no desktop, and a
+headful chromium there does not draw an invisible window -- it hangs, and
+`page.goto` burns its whole timeout on every run while the same navigation from
+a normal user session finishes in a few seconds.
+
+### Watching a run
+
+Two halves, and only both together put a browser on your screen:
+
+1. The job asks for one. The `Start job` body sends
+   `"browser": { "headless": false }`, which `/run` passes through to
+   `new Browser()`. `.env` keeps `HEADLESS=true` as the safe default, so a job
+   that does not ask still runs hidden.
+2. The agent sits in your session, not in session 0:
+
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File scripts\install-service.ps1 -Session
+   ```
+
+   Elevated. That parks the `N8NBrowserAgent` service at Manual and writes a
+   Startup-folder script that runs the agent as you at logon. Both cannot run
+   at once - they would race for port 3001. The cost is that a run now needs
+   someone logged in; the 07:00 UTC schedule fires into nothing at a login
+   screen. Re-run the same script with no switch to put the service back.
 
 ## Gotchas hit while wiring this up
 

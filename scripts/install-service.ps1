@@ -3,7 +3,13 @@
     /run endpoint whether or not anyone is logged in.
 
         powershell -ExecutionPolicy Bypass -File scripts\install-service.ps1
+        powershell -ExecutionPolicy Bypass -File scripts\install-service.ps1 -Session
         powershell -ExecutionPolicy Bypass -File scripts\install-service.ps1 -Remove
+
+    -Session is the opposite trade: the service is parked and the agent runs
+    from the Startup folder in the logged-in user's session instead, which is
+    the only way a headful browser is visible to anyone. Runs then need someone
+    logged in - a schedule that fires at the login screen has no agent to call.
 
     Must be run elevated: creating a service and running it as LocalSystem both
     need admin. Re-running is safe — the service is reconfigured, not duplicated.
@@ -15,7 +21,8 @@
 #>
 
 param(
-    [switch] $Remove
+    [switch] $Remove,
+    [switch] $Session
 )
 
 $ErrorActionPreference = "Stop"
@@ -128,6 +135,59 @@ if ($Remove) {
     & $nssm remove $serviceName confirm
 
     Write-Host "Removed $serviceName. The agent is no longer running at boot."
+
+    exit 0
+
+}
+
+if ($Session) {
+
+    # Session 0, where a service lives, has no desktop. A headful chromium
+    # launched there is not drawn anywhere - it is simply invisible, and slower.
+    # So visibility is not a flag on the browser, it is a decision about which
+    # session the agent process sits in.
+    if ($existing) {
+
+        Stop-Service $serviceName -Force -ErrorAction SilentlyContinue
+
+        Set-Service $serviceName -StartupType Manual
+
+        Write-Host "Parked $serviceName (Manual). It no longer takes the port at boot."
+
+    }
+
+    if (-not (Test-Path $logDirectory)) {
+        New-Item -ItemType Directory -Path $logDirectory | Out-Null
+    }
+
+    $agentLog = Join-Path $logDirectory "agent.log"
+
+    @(
+        "@echo off",
+        "cd /d `"$projectRoot`"",
+        "start `"n8n browser agent`" /min cmd /c `"node src\server.js >> logs\agent.log 2>&1`""
+    ) | Set-Content -Path $startupScript -Encoding ASCII
+
+    Write-Host "Wrote $startupScript - the agent starts in your session at logon."
+
+    Start-Process -FilePath $startupScript -WindowStyle Hidden
+
+    Start-Sleep -Seconds 3
+
+    $port = 3001
+
+    $line = Select-String -Path (Join-Path $projectRoot ".env") -Pattern "^PORT=(\d+)" -ErrorAction SilentlyContinue
+
+    if ($line) {
+        $port = [int] $line.Matches[0].Groups[1].Value
+    }
+
+    $health = Invoke-WebRequest -Uri "http://127.0.0.1:$port/health" -UseBasicParsing -TimeoutSec 15
+
+    Write-Host ""
+    Write-Host "Agent running in session $((Get-Process -Id $PID).SessionId) - /health says $($health.Content)"
+    Write-Host "Logs: $agentLog"
+    Write-Host "Back to the service: powershell -ExecutionPolicy Bypass -File scripts\install-service.ps1"
 
     exit 0
 

@@ -97,6 +97,11 @@ the migration notes are in `n8n/README.md`.
   purpose: the callback URL comes from the caller, so the inbound token must
   never be sent out with it. That URL is also an SSRF lever — `/run` will only
   POST to `http(s)`, and `CALLBACK_HOSTS` narrows it to named hosts when set.
+- A visible browser is two changes, not one: the job needs
+  `"browser": { "headless": false }` (per-job, overriding `HEADLESS`), *and*
+  the agent has to run in a logged-in session — `install-service.ps1 -Session`
+  parks the LocalSystem service and starts it from the Startup folder instead.
+  Session 0 has no desktop, so a headful chromium there is invisible either way.
 - `429` from `/run` means the queue is full (`MAX_QUEUE`) — retry later.
 - Jobs on the same host never run in parallel (one session file, one login);
   different hosts do, up to `CONCURRENCY`.
