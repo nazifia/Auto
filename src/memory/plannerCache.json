@@ -98,8 +98,8 @@
                 "when": null
             }
         ],
-        "hits": 24,
-        "success": 27,
+        "hits": 25,
+        "success": 28,
         "fail": 0,
         "updated": "2026-08-06T05:12:09.295Z"
     },
@@ -119,8 +119,8 @@
                 "when": null
             }
         ],
-        "hits": 34,
-        "success": 37,
+        "hits": 36,
+        "success": 39,
         "fail": 0,
         "updated": "2026-08-05T18:51:29.892Z"
     },
@@ -234,8 +234,8 @@
                 "when": null
             }
         ],
-        "hits": 23,
-        "success": 26,
+        "hits": 24,
+        "success": 27,
         "fail": 0,
         "updated": "2026-08-06T08:52:29.898Z"
     },
@@ -255,8 +255,8 @@
                 "when": null
             }
         ],
-        "hits": 20,
-        "success": 23,
+        "hits": 21,
+        "success": 24,
         "fail": 0,
         "updated": "2026-08-10T22:50:42.670Z"
     },
@@ -296,8 +296,8 @@
                 "when": null
             }
         ],
-        "hits": 69,
-        "success": 72,
+        "hits": 73,
+        "success": 76,
         "fail": 0,
         "updated": "2026-08-06T16:08:02.415Z"
     },
@@ -317,8 +317,8 @@
                 "when": null
             }
         ],
-        "hits": 5,
-        "success": 8,
+        "hits": 7,
+        "success": 10,
         "fail": 0,
         "updated": "2026-08-10T22:54:41.362Z"
     },
@@ -338,8 +338,8 @@
                 "when": null
             }
         ],
-        "hits": 6,
-        "success": 9,
+        "hits": 8,
+        "success": 11,
         "fail": 0,
         "updated": "2026-08-10T22:55:14.565Z"
     },
@@ -359,8 +359,8 @@
                 "when": null
             }
         ],
-        "hits": 5,
-        "success": 8,
+        "hits": 6,
+        "success": 9,
         "fail": 0,
         "updated": "2026-08-10T22:56:43.763Z"
     },
@@ -390,8 +390,8 @@
                 "when": null
             }
         ],
-        "hits": 6,
-        "success": 9,
+        "hits": 7,
+        "success": 10,
         "fail": 0,
         "updated": "2026-08-10T22:57:23.846Z"
     },
@@ -409,22 +409,12 @@
                 "ms": null,
                 "url": null,
                 "when": null
-            },
-            {
-                "action": "wait",
-                "fingerprint": null,
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": 2000,
-                "url": null,
-                "when": null
             }
         ],
         "hits": 14,
         "success": 14,
-        "fail": 4,
-        "updated": "2026-08-23T20:10:22.301Z"
+        "fail": 6,
+        "updated": "2026-08-23T20:53:06.268Z"
     },
     "3wtgfw": {
         "host": "www.pythonanywhere.com",
@@ -443,9 +433,9 @@
             }
         ],
         "hits": 0,
-        "success": 6,
+        "success": 7,
         "fail": 0,
-        "updated": "2026-08-23T20:11:14.810Z"
+        "updated": "2026-08-23T20:54:07.074Z"
     },
     "ot1gr9": {
         "host": "www.pythonanywhere.com",
@@ -463,8 +453,8 @@
                 "when": null
             }
         ],
-        "hits": 4,
-        "success": 7,
+        "hits": 5,
+        "success": 8,
         "fail": 0,
         "updated": "2026-08-10T23:06:53.577Z"
     },
@@ -484,8 +474,8 @@
                 "when": null
             }
         ],
-        "hits": 6,
-        "success": 9,
+        "hits": 7,
+        "success": 10,
         "fail": 0,
         "updated": "2026-08-10T23:09:02.895Z"
     },
@@ -505,20 +495,10 @@
                 "when": null
             },
             {
-                "action": "wait",
-                "fingerprint": null,
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": 2000,
-                "url": null,
-                "when": null
-            },
-            {
                 "action": "finish",
                 "fingerprint": null,
                 "source": null,
-                "value": "Web page is now visible",
+                "value": "The web page is visible",
                 "key": null,
                 "ms": null,
                 "url": null,
@@ -526,9 +506,9 @@
             }
         ],
         "hits": 2,
-        "success": 9,
+        "success": 10,
         "fail": 3,
-        "updated": "2026-08-23T20:12:20.586Z"
+        "updated": "2026-08-23T20:55:40.897Z"
     },
     "ff59kz": {
         "host": "www.pythonanywhere.com",
@@ -597,10 +577,10 @@
                 "when": null
             }
         ],
-        "hits": 11,
+        "hits": 12,
         "success": 12,
-        "fail": 2,
-        "updated": "2026-08-06T16:40:49.724Z"
+        "fail": 4,
+        "updated": "2026-08-23T20:58:03.970Z"
     },
     "1sq2a4h": {
         "host": "www.pythonanywhere.com",
@@ -753,8 +733,8 @@
                 "when": null
             }
         ],
-        "hits": 5,
-        "success": 8,
+        "hits": 7,
+        "success": 10,
         "fail": 0,
         "updated": "2026-08-11T06:42:28.844Z"
     },

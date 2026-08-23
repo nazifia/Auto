@@ -1,553 +1,5 @@
 [
     {
-        "task": "Log in as roster and click Run until 1 month from today",
-        "url": "https://pythonanywhere.com/login",
-        "ok": false,
-        "time": "2026-08-11T18:43:28.479Z",
-        "actions": [
-            {
-                "action": "fill",
-                "element": {
-                    "elementId": 4,
-                    "fingerprint": "input|id:id_auth-username",
-                    "role": "input",
-                    "text": "",
-                    "placeholder": "Username or email address"
-                },
-                "source": "USERNAME",
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:41:38.355Z"
-            },
-            {
-                "action": "fill",
-                "element": {
-                    "elementId": 5,
-                    "fingerprint": "input|id:id_auth-password",
-                    "role": "input",
-                    "text": "",
-                    "placeholder": "Password"
-                },
-                "source": "PASSWORD",
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:41:40.259Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|id:id_next",
-                    "role": "button",
-                    "text": "Log in",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:41:42.621Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 37,
-                    "fingerprint": "link|text:open web tab",
-                    "role": "link",
-                    "text": "Open Web tab",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Open the web tab",
-                "ok": true,
-                "time": "2026-08-11T18:41:46.870Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 15,
-                    "fingerprint": "link|id:id_web_app_link",
-                    "role": "link",
-                    "text": "Web",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Open the web tab",
-                "ok": true,
-                "time": "2026-08-11T18:41:52.055Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|text:run until 1 month from today",
-                    "role": "button",
-                    "text": "Run until 1 month from today",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:41:54.655Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|text:run until 1 month from today",
-                    "role": "button",
-                    "text": "Run until 1 month from today",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:41:57.390Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 20,
-                    "fingerprint": "link|id:id_web_app_link",
-                    "role": "link",
-                    "text": "Web",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:43:25.285Z"
-            }
-        ]
-    },
-    {
-        "task": "Log in as bestrong and click Run until 1 month from today",
-        "url": "https://pythonanywhere.com/login",
-        "ok": false,
-        "time": "2026-08-11T18:44:49.055Z",
-        "actions": [
-            {
-                "action": "fill",
-                "element": {
-                    "elementId": 4,
-                    "fingerprint": "input|id:id_auth-username",
-                    "role": "input",
-                    "text": "",
-                    "placeholder": "Username or email address"
-                },
-                "source": "USERNAME",
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:43:34.559Z"
-            },
-            {
-                "action": "fill",
-                "element": {
-                    "elementId": 5,
-                    "fingerprint": "input|id:id_auth-password",
-                    "role": "input",
-                    "text": "",
-                    "placeholder": "Password"
-                },
-                "source": "PASSWORD",
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:43:36.389Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|id:id_next",
-                    "role": "button",
-                    "text": "Log in",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:43:39.015Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 40,
-                    "fingerprint": "link|text:open web tab",
-                    "role": "link",
-                    "text": "Open Web tab",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Open the web tab",
-                "ok": true,
-                "time": "2026-08-11T18:43:58.530Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 15,
-                    "fingerprint": "link|id:id_web_app_link",
-                    "role": "link",
-                    "text": "Web",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Open the web tab",
-                "ok": true,
-                "time": "2026-08-11T18:44:03.286Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|text:run until 1 month from today",
-                    "role": "button",
-                    "text": "Run until 1 month from today",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:44:09.337Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|text:run until 1 month from today",
-                    "role": "button",
-                    "text": "Run until 1 month from today",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:44:12.565Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 19,
-                    "fingerprint": "link|id:id_web_app_link",
-                    "role": "link",
-                    "text": "Web",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:44:45.979Z"
-            }
-        ]
-    },
-    {
-        "task": "Log in as pharmapp and click Run until 1 month from today",
-        "url": "https://pythonanywhere.com/login",
-        "ok": false,
-        "time": "2026-08-11T18:47:29.929Z",
-        "actions": [
-            {
-                "action": "fill",
-                "element": {
-                    "elementId": 4,
-                    "fingerprint": "input|id:id_auth-username",
-                    "role": "input",
-                    "text": "",
-                    "placeholder": "Username or email address"
-                },
-                "source": "USERNAME",
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:44:53.944Z"
-            },
-            {
-                "action": "fill",
-                "element": {
-                    "elementId": 5,
-                    "fingerprint": "input|id:id_auth-password",
-                    "role": "input",
-                    "text": "",
-                    "placeholder": "Password"
-                },
-                "source": "PASSWORD",
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:44:55.800Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|id:id_next",
-                    "role": "button",
-                    "text": "Log in",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:44:58.097Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 40,
-                    "fingerprint": "link|text:open web tab",
-                    "role": "link",
-                    "text": "Open Web tab",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Open the web tab",
-                "ok": true,
-                "time": "2026-08-11T18:45:02.062Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 15,
-                    "fingerprint": "link|id:id_web_app_link",
-                    "role": "link",
-                    "text": "Web",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Open the web tab",
-                "ok": true,
-                "time": "2026-08-11T18:45:10.330Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|text:run until 1 month from today",
-                    "role": "button",
-                    "text": "Run until 1 month from today",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:45:14.637Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|text:run until 1 month from today",
-                    "role": "button",
-                    "text": "Run until 1 month from today",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:45:17.616Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 20,
-                    "fingerprint": "link|id:id_web_app_link",
-                    "role": "link",
-                    "text": "Web",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:47:26.740Z"
-            }
-        ]
-    },
-    {
-        "task": "Log in as yousrapharmacystores and click Run until 1 month from today",
-        "url": "https://pythonanywhere.com/login",
-        "ok": false,
-        "time": "2026-08-11T18:52:53.872Z",
-        "actions": [
-            {
-                "action": "fill",
-                "element": {
-                    "elementId": 4,
-                    "fingerprint": "input|id:id_auth-username",
-                    "role": "input",
-                    "text": "",
-                    "placeholder": "Username or email address"
-                },
-                "source": "USERNAME",
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:47:35.403Z"
-            },
-            {
-                "action": "fill",
-                "element": {
-                    "elementId": 5,
-                    "fingerprint": "input|id:id_auth-password",
-                    "role": "input",
-                    "text": "",
-                    "placeholder": "Password"
-                },
-                "source": "PASSWORD",
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:47:37.341Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|id:id_next",
-                    "role": "button",
-                    "text": "Log in",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Enter the username and password then click Log in",
-                "ok": true,
-                "time": "2026-08-11T18:47:39.734Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 21,
-                    "fingerprint": "link|id:id_web_app_link",
-                    "role": "link",
-                    "text": "Web",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Open the web tab",
-                "ok": true,
-                "time": "2026-08-11T18:47:44.467Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|text:run until 1 month from today",
-                    "role": "button",
-                    "text": "Run until 1 month from today",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:48:12.158Z"
-            },
-            {
-                "action": "wait",
-                "element": null,
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:48:15.808Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 3,
-                    "fingerprint": "button|text:run until 1 month from today",
-                    "role": "button",
-                    "text": "Run until 1 month from today",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:48:17.892Z"
-            },
-            {
-                "action": "wait",
-                "element": null,
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:48:21.491Z"
-            },
-            {
-                "action": "click",
-                "element": {
-                    "elementId": 20,
-                    "fingerprint": "link|id:id_web_app_link",
-                    "role": "link",
-                    "text": "Web",
-                    "placeholder": ""
-                },
-                "source": null,
-                "value": null,
-                "url": null,
-                "goal": "Click Run until 1 month from today",
-                "ok": true,
-                "time": "2026-08-11T18:52:50.829Z"
-            }
-        ]
-    },
-    {
         "task": "Log in as healthinfo and click Run until 1 month from today",
         "url": "https://pythonanywhere.com/login",
         "ok": false,
@@ -3802,6 +3254,346 @@
                 "goal": "Open Web tab",
                 "ok": true,
                 "time": "2026-08-23T20:44:14.252Z"
+            }
+        ]
+    },
+    {
+        "task": "Log in as nazifi and click Run until 1 month from today",
+        "url": "https://pythonanywhere.com/login",
+        "ok": true,
+        "time": "2026-08-23T20:48:54.050Z",
+        "actions": [
+            {
+                "action": "fill",
+                "element": {
+                    "elementId": 4,
+                    "fingerprint": "input|id:id_auth-username",
+                    "role": "input",
+                    "text": "",
+                    "placeholder": "Username or email address"
+                },
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:48:35.284Z"
+            },
+            {
+                "action": "fill",
+                "element": {
+                    "elementId": 5,
+                    "fingerprint": "input|id:id_auth-password",
+                    "role": "input",
+                    "text": "",
+                    "placeholder": "Password"
+                },
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:48:37.108Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 3,
+                    "fingerprint": "button|id:id_next",
+                    "role": "button",
+                    "text": "Log in",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:48:39.484Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 41,
+                    "fingerprint": "link|text:open web tab",
+                    "role": "link",
+                    "text": "Open Web tab",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab",
+                "ok": true,
+                "time": "2026-08-23T20:48:43.630Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 15,
+                    "fingerprint": "link|id:id_web_app_link",
+                    "role": "link",
+                    "text": "Web",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab",
+                "ok": true,
+                "time": "2026-08-23T20:48:49.546Z"
+            },
+            {
+                "action": "wait",
+                "element": null,
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab",
+                "ok": true,
+                "time": "2026-08-23T20:48:53.195Z"
+            }
+        ]
+    },
+    {
+        "task": "Login then click Web then click Run until 1 month from today",
+        "url": "https://www.pythonanywhere.com/login/",
+        "ok": true,
+        "time": "2026-08-23T20:50:27.964Z",
+        "actions": [
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 40,
+                    "fingerprint": "link|text:open web tab",
+                    "role": "link",
+                    "text": "Open Web tab",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open Web tab",
+                "ok": true,
+                "time": "2026-08-23T20:50:23.363Z"
+            }
+        ]
+    },
+    {
+        "task": "Log in as aneeq and click Run until 1 month from today",
+        "url": "https://pythonanywhere.com/login",
+        "ok": false,
+        "time": "2026-08-23T20:54:12.788Z",
+        "actions": [
+            {
+                "action": "fill",
+                "element": {
+                    "elementId": 4,
+                    "fingerprint": "input|id:id_auth-username",
+                    "role": "input",
+                    "text": "",
+                    "placeholder": "Username or email address"
+                },
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:49:00.238Z"
+            },
+            {
+                "action": "fill",
+                "element": {
+                    "elementId": 5,
+                    "fingerprint": "input|id:id_auth-password",
+                    "role": "input",
+                    "text": "",
+                    "placeholder": "Password"
+                },
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:49:02.110Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 3,
+                    "fingerprint": "button|id:id_next",
+                    "role": "button",
+                    "text": "Log in",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:49:09.772Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 41,
+                    "fingerprint": "link|text:open web tab",
+                    "role": "link",
+                    "text": "Open Web tab",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab",
+                "ok": true,
+                "time": "2026-08-23T20:49:15.755Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 3,
+                    "fingerprint": "button|text:run until 1 month from today",
+                    "role": "button",
+                    "text": "Run until 1 month from today",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today",
+                "ok": true,
+                "time": "2026-08-23T20:49:31.990Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 3,
+                    "fingerprint": "button|text:run until 1 month from today",
+                    "role": "button",
+                    "text": "Run until 1 month from today",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today",
+                "ok": true,
+                "time": "2026-08-23T20:53:10.437Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 40,
+                    "fingerprint": "link|text:open web tab",
+                    "role": "link",
+                    "text": "Open Web tab",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today",
+                "ok": true,
+                "time": "2026-08-23T20:54:08.984Z"
+            }
+        ]
+    },
+    {
+        "task": "Log in and click Run until 1 month from today",
+        "url": "https://www.pythonanywhere.com/login/",
+        "ok": true,
+        "time": "2026-08-23T20:55:36.110Z",
+        "actions": [
+            {
+                "action": "fill",
+                "element": {
+                    "elementId": 4,
+                    "fingerprint": "input|id:id_auth-username",
+                    "role": "input",
+                    "text": "",
+                    "placeholder": "Username or email address"
+                },
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:55:17.582Z"
+            },
+            {
+                "action": "fill",
+                "element": {
+                    "elementId": 5,
+                    "fingerprint": "input|id:id_auth-password",
+                    "role": "input",
+                    "text": "",
+                    "placeholder": "Password"
+                },
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:55:19.456Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 3,
+                    "fingerprint": "button|id:id_next",
+                    "role": "button",
+                    "text": "Log in",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in",
+                "ok": true,
+                "time": "2026-08-23T20:55:21.974Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 41,
+                    "fingerprint": "link|text:open web tab",
+                    "role": "link",
+                    "text": "Open Web tab",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the Web tab",
+                "ok": true,
+                "time": "2026-08-23T20:55:26.256Z"
+            },
+            {
+                "action": "click",
+                "element": {
+                    "elementId": 15,
+                    "fingerprint": "link|id:id_web_app_link",
+                    "role": "link",
+                    "text": "Web",
+                    "placeholder": ""
+                },
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the Web tab",
+                "ok": true,
+                "time": "2026-08-23T20:55:31.768Z"
+            },
+            {
+                "action": "wait",
+                "element": null,
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the Web tab",
+                "ok": true,
+                "time": "2026-08-23T20:55:35.314Z"
             }
         ]
     }
