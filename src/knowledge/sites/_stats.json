@@ -1,11 +1,11 @@
 {
     "www.pythonanywhere.com": {
-        "visits": 408,
-        "goals": 105,
+        "visits": 776,
+        "goals": 185,
         "failures": 2,
-        "llmCalls": 150,
-        "cacheHits": 118,
-        "lastVisit": "2026-08-11T16:44:38.691Z"
+        "llmCalls": 210,
+        "cacheHits": 284,
+        "lastVisit": "2026-08-23T18:56:33.327Z"
     },
     "example.com": {
         "visits": 3,

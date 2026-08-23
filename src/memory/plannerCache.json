@@ -98,8 +98,8 @@
                 "when": null
             }
         ],
-        "hits": 10,
-        "success": 13,
+        "hits": 17,
+        "success": 20,
         "fail": 0,
         "updated": "2026-08-06T05:12:09.295Z"
     },
@@ -119,8 +119,8 @@
                 "when": null
             }
         ],
-        "hits": 16,
-        "success": 19,
+        "hits": 26,
+        "success": 29,
         "fail": 0,
         "updated": "2026-08-05T18:51:29.892Z"
     },
@@ -234,8 +234,8 @@
                 "when": null
             }
         ],
-        "hits": 9,
-        "success": 12,
+        "hits": 16,
+        "success": 19,
         "fail": 0,
         "updated": "2026-08-06T08:52:29.898Z"
     },
@@ -255,8 +255,8 @@
                 "when": null
             }
         ],
-        "hits": 6,
-        "success": 9,
+        "hits": 13,
+        "success": 16,
         "fail": 0,
         "updated": "2026-08-10T22:50:42.670Z"
     },
@@ -296,8 +296,8 @@
                 "when": null
             }
         ],
-        "hits": 30,
-        "success": 33,
+        "hits": 59,
+        "success": 62,
         "fail": 0,
         "updated": "2026-08-06T16:08:02.415Z"
     },
@@ -317,8 +317,8 @@
                 "when": null
             }
         ],
-        "hits": 2,
-        "success": 5,
+        "hits": 4,
+        "success": 7,
         "fail": 0,
         "updated": "2026-08-10T22:54:41.362Z"
     },
@@ -338,8 +338,8 @@
                 "when": null
             }
         ],
-        "hits": 2,
-        "success": 5,
+        "hits": 5,
+        "success": 8,
         "fail": 0,
         "updated": "2026-08-10T22:55:14.565Z"
     },
@@ -359,8 +359,8 @@
                 "when": null
             }
         ],
-        "hits": 2,
-        "success": 5,
+        "hits": 4,
+        "success": 7,
         "fail": 0,
         "updated": "2026-08-10T22:56:43.763Z"
     },
@@ -390,8 +390,8 @@
                 "when": null
             }
         ],
-        "hits": 2,
-        "success": 5,
+        "hits": 5,
+        "success": 8,
         "fail": 0,
         "updated": "2026-08-10T22:57:23.846Z"
     },
@@ -411,9 +411,9 @@
                 "when": null
             }
         ],
-        "hits": 7,
-        "success": 10,
-        "fail": 0,
+        "hits": 13,
+        "success": 14,
+        "fail": 2,
         "updated": "2026-08-06T16:38:04.242Z"
     },
     "3wtgfw": {
@@ -430,12 +430,34 @@
                 "ms": null,
                 "url": null,
                 "when": null
+            },
+            {
+                "action": "wait",
+                "fingerprint": null,
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": 2000,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|name:increase_recent_console_limit",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": {
+                    "exists": "Run until 1 month from today"
+                }
             }
         ],
         "hits": 0,
-        "success": 4,
+        "success": 5,
         "fail": 0,
-        "updated": "2026-08-11T16:37:02.424Z"
+        "updated": "2026-08-11T18:31:26.921Z"
     },
     "ot1gr9": {
         "host": "www.pythonanywhere.com",
@@ -453,8 +475,8 @@
                 "when": null
             }
         ],
-        "hits": 2,
-        "success": 5,
+        "hits": 3,
+        "success": 6,
         "fail": 0,
         "updated": "2026-08-10T23:06:53.577Z"
     },
@@ -474,8 +496,8 @@
                 "when": null
             }
         ],
-        "hits": 2,
-        "success": 5,
+        "hits": 5,
+        "success": 8,
         "fail": 0,
         "updated": "2026-08-10T23:09:02.895Z"
     },
@@ -486,7 +508,7 @@
         "steps": [
             {
                 "action": "click",
-                "fingerprint": "link|id:id_web_app_link",
+                "fingerprint": "button|text:run until 1 month from today",
                 "source": null,
                 "value": null,
                 "key": null,
@@ -495,26 +517,15 @@
                 "when": null
             },
             {
-                "action": "finish",
+                "action": "wait",
                 "fingerprint": null,
                 "source": null,
-                "value": "Web page is now visible after clicking the Web link",
+                "value": null,
                 "key": null,
-                "ms": null,
+                "ms": 2000,
                 "url": null,
                 "when": null
-            }
-        ],
-        "hits": 0,
-        "success": 4,
-        "fail": 1,
-        "updated": "2026-08-11T16:38:49.966Z"
-    },
-    "ff59kz": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Open the web tab",
-        "signature": "10lgetn",
-        "steps": [
+            },
             {
                 "action": "click",
                 "fingerprint": "link|id:id_web_app_link",
@@ -526,10 +537,61 @@
                 "when": null
             },
             {
+                "action": "wait",
+                "fingerprint": null,
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": 2000,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 2,
+        "success": 8,
+        "fail": 3,
+        "updated": "2026-08-19T14:54:53.924Z"
+    },
+    "ff59kz": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Open the web tab",
+        "signature": "10lgetn",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "wait",
+                "fingerprint": null,
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": 2000,
+                "url": null,
+                "when": null
+            },
+            {
                 "action": "finish",
                 "fingerprint": null,
                 "source": null,
-                "value": "Web page is visible",
+                "value": "Web page is now visible",
                 "key": null,
                 "ms": null,
                 "url": null,
@@ -537,9 +599,9 @@
             }
         ],
         "hits": 0,
-        "success": 2,
+        "success": 3,
         "fail": 0,
-        "updated": "2026-08-11T06:45:54.136Z"
+        "updated": "2026-08-18T18:57:07.612Z"
     },
     "1l6dyzx": {
         "host": "www.pythonanywhere.com",
@@ -557,8 +619,8 @@
                 "when": null
             }
         ],
-        "hits": 5,
-        "success": 8,
+        "hits": 9,
+        "success": 12,
         "fail": 0,
         "updated": "2026-08-06T16:40:49.724Z"
     },
@@ -579,9 +641,9 @@
             }
         ],
         "hits": 0,
-        "success": 1,
+        "success": 2,
         "fail": 0,
-        "updated": "2026-08-06T16:28:04.097Z"
+        "updated": "2026-08-11T18:37:58.361Z"
     },
     "bnu29c": {
         "host": "www.pythonanywhere.com",
@@ -630,8 +692,8 @@
                 "when": null
             }
         ],
-        "hits": 2,
-        "success": 5,
+        "hits": 4,
+        "success": 7,
         "fail": 0,
         "updated": "2026-08-10T23:11:30.891Z"
     },
@@ -651,8 +713,8 @@
                 "when": null
             }
         ],
-        "hits": 2,
-        "success": 5,
+        "hits": 4,
+        "success": 7,
         "fail": 0,
         "updated": "2026-08-10T23:11:51.479Z"
     },
@@ -672,8 +734,8 @@
                 "when": null
             }
         ],
-        "hits": 3,
-        "success": 6,
+        "hits": 5,
+        "success": 8,
         "fail": 0,
         "updated": "2026-08-06T16:47:48.040Z"
     },
@@ -713,8 +775,8 @@
                 "when": null
             }
         ],
-        "hits": 1,
-        "success": 4,
+        "hits": 4,
+        "success": 7,
         "fail": 0,
         "updated": "2026-08-11T06:42:28.844Z"
     },
@@ -732,34 +794,12 @@
                 "ms": null,
                 "url": null,
                 "when": null
-            },
-            {
-                "action": "click",
-                "fingerprint": "button|name:increase_recent_console_limit",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": {
-                    "exists": "Run until 1 month from today"
-                }
-            },
-            {
-                "action": "finish",
-                "fingerprint": null,
-                "source": null,
-                "value": "Clicked Run until 1 month from today button; date on button should have moved forward",
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
             }
         ],
         "hits": 0,
-        "success": 3,
+        "success": 4,
         "fail": 0,
-        "updated": "2026-08-11T16:40:02.407Z"
+        "updated": "2026-08-18T19:00:23.410Z"
     },
     "1gi6nwy": {
         "host": "www.pythonanywhere.com",
@@ -777,8 +817,8 @@
                 "when": null
             }
         ],
-        "hits": 5,
-        "success": 8,
+        "hits": 9,
+        "success": 12,
         "fail": 0,
         "updated": "2026-08-10T23:12:21.540Z"
     },
@@ -786,250 +826,6 @@
         "host": "www.pythonanywhere.com",
         "goal": "Click Run until 1 month from today",
         "signature": "1a4zpal",
-        "steps": [
-            {
-                "action": "click",
-                "fingerprint": "link|id:id_web_app_link",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            }
-        ],
-        "hits": 0,
-        "success": 1,
-        "fail": 0,
-        "updated": "2026-08-06T17:00:41.166Z"
-    },
-    "16jqnfw": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Enter the username and password then click Log in",
-        "signature": "4jgiel",
-        "steps": [
-            {
-                "action": "finish",
-                "fingerprint": null,
-                "source": null,
-                "value": "Dashboard is visible",
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            }
-        ],
-        "hits": 0,
-        "success": 3,
-        "fail": 0,
-        "updated": "2026-08-11T16:43:46.544Z"
-    },
-    "1lr173j": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Open the web tab",
-        "signature": "qsy9az",
-        "steps": [
-            {
-                "action": "click",
-                "fingerprint": "link|text:open web tab",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            }
-        ],
-        "hits": 1,
-        "success": 4,
-        "fail": 0,
-        "updated": "2026-08-11T06:52:12.223Z"
-    },
-    "1xbit49": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Click Run until 1 month from today",
-        "signature": "kn1v0z",
-        "steps": [
-            {
-                "action": "click",
-                "fingerprint": "button|text:run until 1 month from today",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            }
-        ],
-        "hits": 2,
-        "success": 5,
-        "fail": 0,
-        "updated": "2026-08-11T06:58:58.363Z"
-    },
-    "1m73tns": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Click Run until 1 month from today",
-        "signature": "183evmm",
-        "steps": [
-            {
-                "action": "click",
-                "fingerprint": "link|text:open web tab",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            },
-            {
-                "action": "click",
-                "fingerprint": "link|id:id_web_app_link",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            },
-            {
-                "action": "click",
-                "fingerprint": "button|name:increase_recent_console_limit",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": {
-                    "exists": "Run until 1 month from today"
-                }
-            }
-        ],
-        "hits": 0,
-        "success": 2,
-        "fail": 0,
-        "updated": "2026-08-11T16:03:36.982Z"
-    },
-    "1eznqga": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Enter the username and password then click Log in",
-        "signature": "11icxbo",
-        "steps": [
-            {
-                "action": "finish",
-                "fingerprint": null,
-                "source": null,
-                "value": "Dashboard is visible, confirming login.",
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            }
-        ],
-        "hits": 0,
-        "success": 2,
-        "fail": 0,
-        "updated": "2026-08-11T16:04:11.513Z"
-    },
-    "1avub2l": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Open the web tab",
-        "signature": "1mkh2pf",
-        "steps": [
-            {
-                "action": "click",
-                "fingerprint": "link|text:open web tab",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            }
-        ],
-        "hits": 0,
-        "success": 2,
-        "fail": 0,
-        "updated": "2026-08-11T16:04:41.658Z"
-    },
-    "eppvsp": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Click Run until 1 month from today",
-        "signature": "1ukchrn",
-        "steps": [
-            {
-                "action": "click",
-                "fingerprint": "button|text:run until 1 month from today",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            }
-        ],
-        "hits": 1,
-        "success": 4,
-        "fail": 0,
-        "updated": "2026-08-11T16:09:38.528Z"
-    },
-    "904gs5": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Click Run until 1 month from today",
-        "signature": "xsvclf",
-        "steps": [
-            {
-                "action": "click",
-                "fingerprint": "link|text:open web tab",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            },
-            {
-                "action": "click",
-                "fingerprint": "button|name:increase_recent_console_limit",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": {
-                    "exists": "Run until 1 month from today"
-                }
-            }
-        ],
-        "hits": 0,
-        "success": 1,
-        "fail": 0,
-        "updated": "2026-08-06T17:13:52.108Z"
-    },
-    "1duyk2p": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Enter the username and password then click Log in",
-        "signature": "8l4ux9",
-        "steps": [
-            {
-                "action": "finish",
-                "fingerprint": null,
-                "source": null,
-                "value": "Dashboard is visible",
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
-            }
-        ],
-        "hits": 0,
-        "success": 2,
-        "fail": 0,
-        "updated": "2026-08-11T16:19:50.273Z"
-    },
-    "15mqmtl": {
-        "host": "www.pythonanywhere.com",
-        "goal": "Open the web tab",
-        "signature": "1f55lrv",
         "steps": [
             {
                 "action": "click",
@@ -1052,10 +848,96 @@
                 "when": null
             },
             {
+                "action": "click",
+                "fingerprint": "button|id:id_disk_quota_popover",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": {
+                    "exists": "Run until 1 month from today"
+                }
+            }
+        ],
+        "hits": 0,
+        "success": 2,
+        "fail": 0,
+        "updated": "2026-08-11T17:12:46.650Z"
+    },
+    "16jqnfw": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "4jgiel",
+        "steps": [
+            {
                 "action": "finish",
                 "fingerprint": null,
                 "source": null,
-                "value": "Web page is visible after opening the web tab",
+                "value": "Dashboard is visible, confirming successful login.",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 2,
+        "success": 5,
+        "fail": 0,
+        "updated": "2026-08-11T17:13:27.978Z"
+    },
+    "1lr173j": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Open the web tab",
+        "signature": "qsy9az",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 3,
+        "success": 6,
+        "fail": 0,
+        "updated": "2026-08-11T06:52:12.223Z"
+    },
+    "1xbit49": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Click Run until 1 month from today",
+        "signature": "kn1v0z",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 8,
+        "success": 11,
+        "fail": 0,
+        "updated": "2026-08-11T06:58:58.363Z"
+    },
+    "1m73tns": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Click Run until 1 month from today",
+        "signature": "183evmm",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
                 "key": null,
                 "ms": null,
                 "url": null,
@@ -1063,9 +945,157 @@
             }
         ],
         "hits": 0,
-        "success": 2,
+        "success": 5,
         "fail": 0,
-        "updated": "2026-08-11T16:20:28.056Z"
+        "updated": "2026-08-18T19:05:06.972Z"
+    },
+    "1eznqga": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "11icxbo",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 1,
+        "success": 4,
+        "fail": 0,
+        "updated": "2026-08-11T18:43:57.215Z"
+    },
+    "1avub2l": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Open the web tab",
+        "signature": "1mkh2pf",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 2,
+        "success": 5,
+        "fail": 0,
+        "updated": "2026-08-11T17:17:59.369Z"
+    },
+    "eppvsp": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Click Run until 1 month from today",
+        "signature": "1ukchrn",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 7,
+        "success": 10,
+        "fail": 0,
+        "updated": "2026-08-11T16:09:38.528Z"
+    },
+    "904gs5": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Click Run until 1 month from today",
+        "signature": "xsvclf",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "wait",
+                "fingerprint": null,
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": 2000,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|name:increase_recent_console_limit",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": {
+                    "exists": "Run until 1 month from today"
+                }
+            }
+        ],
+        "hits": 0,
+        "success": 4,
+        "fail": 0,
+        "updated": "2026-08-18T19:06:37.318Z"
+    },
+    "1duyk2p": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "8l4ux9",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible, user is logged in",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 2,
+        "success": 5,
+        "fail": 0,
+        "updated": "2026-08-11T17:20:08.591Z"
+    },
+    "15mqmtl": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Open the web tab",
+        "signature": "1f55lrv",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 2,
+        "success": 5,
+        "fail": 0,
+        "updated": "2026-08-11T17:22:31.171Z"
     },
     "166nwga": {
         "host": "www.pythonanywhere.com",
@@ -1073,20 +1103,30 @@
         "signature": "1erv4vn",
         "steps": [
             {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            },
+            {
                 "action": "finish",
                 "fingerprint": null,
                 "source": null,
-                "value": "Web page is visible on the web tab",
+                "value": "Web tab opened and web page is visible",
                 "key": null,
                 "ms": null,
                 "url": null,
                 "when": null
             }
         ],
-        "hits": 0,
-        "success": 2,
+        "hits": 2,
+        "success": 5,
         "fail": 0,
-        "updated": "2026-08-06T17:15:58.573Z"
+        "updated": "2026-08-11T17:23:21.413Z"
     },
     "ol24rh": {
         "host": "www.pythonanywhere.com",
@@ -1104,8 +1144,8 @@
                 "when": null
             }
         ],
-        "hits": 1,
-        "success": 4,
+        "hits": 7,
+        "success": 10,
         "fail": 0,
         "updated": "2026-08-11T16:20:48.462Z"
     },
@@ -1169,17 +1209,17 @@
                 "action": "finish",
                 "fingerprint": null,
                 "source": null,
-                "value": "Dashboard is visible, confirming the goal.",
+                "value": "Dashboard is visible",
                 "key": null,
                 "ms": null,
                 "url": null,
                 "when": null
             }
         ],
-        "hits": 0,
-        "success": 2,
+        "hits": 2,
+        "success": 5,
         "fail": 0,
-        "updated": "2026-08-11T16:28:34.885Z"
+        "updated": "2026-08-11T17:27:47.735Z"
     },
     "13tuq40": {
         "host": "www.pythonanywhere.com",
@@ -1188,29 +1228,19 @@
         "steps": [
             {
                 "action": "click",
-                "fingerprint": "link|text:open web tab",
+                "fingerprint": "link|id:id_web_app_link",
                 "source": null,
                 "value": null,
                 "key": null,
                 "ms": null,
                 "url": null,
                 "when": null
-            },
-            {
-                "action": "finish",
-                "fingerprint": null,
-                "source": null,
-                "value": "Web page is now visible",
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
             }
         ],
-        "hits": 0,
-        "success": 2,
+        "hits": 2,
+        "success": 5,
         "fail": 0,
-        "updated": "2026-08-11T16:29:03.329Z"
+        "updated": "2026-08-11T17:28:29.730Z"
     },
     "1f7bguq": {
         "host": "www.pythonanywhere.com",
@@ -1238,8 +1268,8 @@
                 "when": null
             }
         ],
-        "hits": 1,
-        "success": 4,
+        "hits": 7,
+        "success": 10,
         "fail": 0,
         "updated": "2026-08-11T16:29:32.728Z"
     },
@@ -1250,41 +1280,19 @@
         "steps": [
             {
                 "action": "click",
-                "fingerprint": "link|text:open web tab",
+                "fingerprint": "link|id:id_web_app_link",
                 "source": null,
                 "value": null,
                 "key": null,
                 "ms": null,
                 "url": null,
                 "when": null
-            },
-            {
-                "action": "wait",
-                "fingerprint": null,
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": 2000,
-                "url": null,
-                "when": null
-            },
-            {
-                "action": "click",
-                "fingerprint": "button|name:increase_recent_console_limit",
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": {
-                    "exists": "Run until 1 month from today"
-                }
             }
         ],
         "hits": 0,
-        "success": 1,
+        "success": 2,
         "fail": 0,
-        "updated": "2026-08-06T17:33:59.034Z"
+        "updated": "2026-08-11T18:52:48.514Z"
     },
     "ombz71": {
         "host": "www.pythonanywhere.com",
@@ -1295,17 +1303,17 @@
                 "action": "finish",
                 "fingerprint": null,
                 "source": null,
-                "value": "Dashboard is visible, confirming login.",
+                "value": "Dashboard is visible",
                 "key": null,
                 "ms": null,
                 "url": null,
                 "when": null
             }
         ],
-        "hits": 0,
-        "success": 2,
+        "hits": 2,
+        "success": 5,
         "fail": 0,
-        "updated": "2026-08-10T23:18:50.053Z"
+        "updated": "2026-08-11T16:35:48.348Z"
     },
     "ktbgxf": {
         "host": "www.pythonanywhere.com",
@@ -1321,12 +1329,22 @@
                 "ms": null,
                 "url": null,
                 "when": null
+            },
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Web page is now visible after clicking Open Web tab link.",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
             }
         ],
-        "hits": 0,
-        "success": 2,
+        "hits": 3,
+        "success": 6,
         "fail": 0,
-        "updated": "2026-08-10T23:20:48.726Z"
+        "updated": "2026-08-11T16:39:27.568Z"
     },
     "1gp7z1v": {
         "host": "www.pythonanywhere.com",
@@ -1386,10 +1404,10 @@
                 "when": null
             }
         ],
-        "hits": 0,
-        "success": 2,
+        "hits": 7,
+        "success": 10,
         "fail": 0,
-        "updated": "2026-08-06T17:42:18.322Z"
+        "updated": "2026-08-11T16:39:43.423Z"
     },
     "1a593eu": {
         "host": "www.pythonanywhere.com",
@@ -1397,18 +1415,8 @@
         "signature": "5zur96",
         "steps": [
             {
-                "action": "goto",
-                "fingerprint": null,
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": null,
-                "url": "https://www.pythonanywhere.com/user/Healthinfo/webapps/#tab_id_healthinfo_pythonanywhere_com",
-                "when": null
-            },
-            {
                 "action": "click",
-                "fingerprint": "button|name:increase_recent_console_limit",
+                "fingerprint": "link|id:id_web_app_link",
                 "source": null,
                 "value": null,
                 "key": null,
@@ -1418,9 +1426,9 @@
             }
         ],
         "hits": 0,
-        "success": 1,
+        "success": 3,
         "fail": 0,
-        "updated": "2026-08-06T17:43:27.341Z"
+        "updated": "2026-08-11T18:56:23.778Z"
     },
     "na09oa": {
         "host": "www.pythonanywhere.com",
@@ -1459,9 +1467,9 @@
             }
         ],
         "hits": 0,
-        "success": 1,
+        "success": 2,
         "fail": 0,
-        "updated": "2026-08-10T22:50:10.424Z"
+        "updated": "2026-08-19T12:39:30.740Z"
     },
     "2kc47w": {
         "host": "www.pythonanywhere.com",
@@ -1477,12 +1485,34 @@
                 "ms": null,
                 "url": null,
                 "when": null
+            },
+            {
+                "action": "wait",
+                "fingerprint": null,
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": 2000,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_disk_quota_popover",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": {
+                    "exists": "Run until 1 month from today"
+                }
             }
         ],
         "hits": 0,
-        "success": 1,
+        "success": 3,
         "fail": 0,
-        "updated": "2026-08-10T23:06:05.007Z"
+        "updated": "2026-08-19T14:52:34.140Z"
     },
     "azmjvj": {
         "host": "www.pythonanywhere.com",
@@ -1491,7 +1521,7 @@
         "steps": [
             {
                 "action": "click",
-                "fingerprint": "link|text:open web tab",
+                "fingerprint": "link|id:id_web_app_link",
                 "source": null,
                 "value": null,
                 "key": null,
@@ -1501,9 +1531,9 @@
             }
         ],
         "hits": 0,
-        "success": 3,
+        "success": 4,
         "fail": 0,
-        "updated": "2026-08-11T16:43:03.269Z"
+        "updated": "2026-08-18T19:01:56.311Z"
     },
     "uhmygb": {
         "host": "www.pythonanywhere.com",
@@ -1542,10 +1572,10 @@
                 "when": null
             }
         ],
-        "hits": 0,
-        "success": 1,
+        "hits": 3,
+        "success": 6,
         "fail": 0,
-        "updated": "2026-08-10T23:26:54.974Z"
+        "updated": "2026-08-11T17:45:46.486Z"
     },
     "1aay0n2": {
         "host": "www.pythonanywhere.com",
@@ -1561,22 +1591,12 @@
                 "ms": null,
                 "url": null,
                 "when": null
-            },
-            {
-                "action": "finish",
-                "fingerprint": null,
-                "source": null,
-                "value": "Web page is now visible",
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
             }
         ],
-        "hits": 0,
-        "success": 1,
+        "hits": 3,
+        "success": 6,
         "fail": 0,
-        "updated": "2026-08-10T23:28:10.662Z"
+        "updated": "2026-08-11T17:46:42.677Z"
     },
     "uip6y1": {
         "host": "www.pythonanywhere.com",
@@ -1592,22 +1612,12 @@
                 "ms": null,
                 "url": null,
                 "when": null
-            },
-            {
-                "action": "wait",
-                "fingerprint": null,
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": 2000,
-                "url": null,
-                "when": null
             }
         ],
-        "hits": 0,
-        "success": 2,
+        "hits": 5,
+        "success": 8,
         "fail": 0,
-        "updated": "2026-08-10T23:29:26.836Z"
+        "updated": "2026-08-11T16:50:35.751Z"
     },
     "1fepmn": {
         "host": "www.pythonanywhere.com",
@@ -1616,7 +1626,7 @@
         "steps": [
             {
                 "action": "click",
-                "fingerprint": "link|text:account",
+                "fingerprint": "link|id:id_web_app_link",
                 "source": null,
                 "value": null,
                 "key": null,
@@ -1635,32 +1645,12 @@
                 "when": {
                     "exists": "Run until 1 month from today"
                 }
-            },
-            {
-                "action": "wait",
-                "fingerprint": null,
-                "source": null,
-                "value": null,
-                "key": null,
-                "ms": 2000,
-                "url": null,
-                "when": null
-            },
-            {
-                "action": "finish",
-                "fingerprint": null,
-                "source": null,
-                "value": "The date on the button moved forward",
-                "key": null,
-                "ms": null,
-                "url": null,
-                "when": null
             }
         ],
         "hits": 0,
-        "success": 1,
+        "success": 4,
         "fail": 0,
-        "updated": "2026-08-10T23:38:37.332Z"
+        "updated": "2026-08-11T19:02:51.031Z"
     },
     "1j76xfg": {
         "host": "www.pythonanywhere.com",
@@ -1697,12 +1687,22 @@
                 "ms": null,
                 "url": null,
                 "when": null
+            },
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Web page is now visible",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
             }
         ],
-        "hits": 1,
-        "success": 4,
+        "hits": 2,
+        "success": 5,
         "fail": 0,
-        "updated": "2026-08-11T16:44:18.635Z"
+        "updated": "2026-08-11T17:14:48.422Z"
     },
     "18ydkn3": {
         "host": "www.pythonanywhere.com",
@@ -1739,12 +1739,22 @@
                 "ms": null,
                 "url": null,
                 "when": null
+            },
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Web page is visible",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
             }
         ],
-        "hits": 0,
-        "success": 2,
+        "hits": 2,
+        "success": 5,
         "fail": 0,
-        "updated": "2026-08-11T16:08:31.594Z"
+        "updated": "2026-08-11T17:18:35.405Z"
     },
     "1ml53fe": {
         "host": "www.pythonanywhere.com",
@@ -1787,5 +1797,278 @@
         "success": 1,
         "fail": 0,
         "updated": "2026-08-11T16:19:03.650Z"
+    },
+    "qis7my": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Click Run until 1 month from today",
+        "signature": "1jte2wd",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_disk_quota_popover",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 3,
+        "fail": 0,
+        "updated": "2026-08-18T19:15:23.215Z"
+    },
+    "9u0u1": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Click Run until 1 month from today",
+        "signature": "flplvx",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 1,
+        "fail": 0,
+        "updated": "2026-08-11T16:48:12.574Z"
+    },
+    "bk9bp7": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "1lm23n1",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 3,
+        "fail": 0,
+        "updated": "2026-08-11T18:57:03.356Z"
+    },
+    "q9p7x1": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "mmp145",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 1,
+        "fail": 0,
+        "updated": "2026-08-11T16:55:24.065Z"
+    },
+    "nay71d": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "xsvclf",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible, indicating the login was successful.",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 1,
+        "fail": 0,
+        "updated": "2026-08-11T17:17:30.125Z"
+    },
+    "19jdiu": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Click Run until 1 month from today",
+        "signature": "m1xtw0",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "wait",
+                "fingerprint": null,
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": 2000,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|name:increase_recent_console_limit",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": {
+                    "exists": "Run until 1 month from today"
+                }
+            }
+        ],
+        "hits": 0,
+        "success": 3,
+        "fail": 0,
+        "updated": "2026-08-18T19:08:50.607Z"
+    },
+    "ajngcl": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Open the web tab",
+        "signature": "11v43df",
+        "steps": [
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            },
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Web page is now visible after clicking the Web tab",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 3,
+        "fail": 0,
+        "updated": "2026-08-18T19:09:44.196Z"
+    },
+    "19w8cz1": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "1rq0jp",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible, goal satisfied.",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 1,
+        "fail": 0,
+        "updated": "2026-08-11T18:53:25.740Z"
+    },
+    "dyangz": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "vcnkse",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 1,
+        "fail": 0,
+        "updated": "2026-08-19T14:44:54.449Z"
+    },
+    "i32vu0": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "ptm6s1",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible, user is logged in",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 1,
+        "fail": 0,
+        "updated": "2026-08-19T14:46:16.685Z"
+    },
+    "en8j0g": {
+        "host": "www.pythonanywhere.com",
+        "goal": "Enter the username and password then click Log in",
+        "signature": "1oosjkv",
+        "steps": [
+            {
+                "action": "finish",
+                "fingerprint": null,
+                "source": null,
+                "value": "Dashboard is visible",
+                "key": null,
+                "ms": null,
+                "url": null,
+                "when": null
+            }
+        ],
+        "hits": 0,
+        "success": 1,
+        "fail": 0,
+        "updated": "2026-08-19T14:53:21.512Z"
     }
 }
