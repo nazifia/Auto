@@ -165,8 +165,11 @@ if ($existing) {
 
 # N8N_USER_FOLDER is the *parent* of .n8n, not .n8n itself. Point it away from a
 # user profile: LocalSystem's profile is not the one the data was copied into.
-# No GENERIC_TIMEZONE on purpose - the container ran in UTC and the schedule
-# node is named for UTC. Setting one here would silently move the trigger.
+# No GENERIC_TIMEZONE here on purpose, but note what that means: n8n does NOT
+# fall back to UTC, it falls back to America/New_York, so an unpinned schedule
+# node named for 07:00 UTC actually fired at 11:00 UTC. Each workflow pins
+# settings.timezone = "Etc/UTC" instead, which overrides the instance default
+# and travels with the exported JSON.
 & $nssm set $serviceName AppEnvironmentExtra "N8N_USER_FOLDER=$DataRoot" "N8N_PORT=$Port" "N8N_DIAGNOSTICS_ENABLED=false"
 
 & $nssm set $serviceName AppStdout (Join-Path $logDirectory "n8n.log")

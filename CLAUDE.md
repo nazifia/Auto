@@ -69,8 +69,11 @@ New workflow = copy `n8n/browser-agent.json`, change the `Start job` node's
 `jsonBody` and the trigger, then `npm run deploy:flow <file>`.
 
 The `browser-agent` flow runs itself daily from its `Every day 07:00 UTC` node.
-The container sets no timezone, so n8n schedules in UTC, and the agent has to be
-listening when it fires. Both halves run as Windows services, installed elevated
+Nothing sets a timezone on the n8n process, and n8n's fallback is **not** UTC —
+it is `America/New_York`, which quietly fired that node at 11:00 UTC. Both flows
+now pin `settings.timezone` to `Etc/UTC` in their exported JSON, which overrides
+the instance default. The agent has to be listening when the schedule fires.
+Both halves run as Windows services, installed elevated
 by `scripts/install-service.ps1` (`N8NBrowserAgent`, this project on 3001) and
 `scripts/install-n8n-service.ps1` (`N8N`, the npm package on 5678, data in
 `C:\ProgramData\n8n\.n8n`). Docker is no longer in the chain — Docker Desktop

@@ -48,7 +48,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://127.0.0.1:3002/run",
+        "url": "http://127.0.0.1:3001/run",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -196,6 +196,7 @@
   },
   "settings": {
     "executionOrder": "v1",
+    "timezone": "Etc/UTC",
     "saveManualExecutions": true,
     "executionTimeout": 3600
   },
