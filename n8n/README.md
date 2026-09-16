@@ -174,6 +174,11 @@ Two halves, and only both together put a browser on your screen:
 Read credentials sheet ─> Rows to jobs ─> Start jobs ─> Wait ─> succeeded?
 ```
 
+Run it from the n8n UI with **Execute workflow**. This flow has no webhook
+trigger on purpose: n8n's button prefers a webhook trigger over a manual one,
+so with both present a click sits at "Waiting for trigger event" until someone
+calls the webhook. Manual and the daily schedule are the only ways in.
+
 Sheet columns: `URL`, `USERNAME`, `PASSWORD_REF` (or `PASSWORD`), `SUBMIT`,
 `TAB`, `BUTTON`, and optional `ENABLED`. Header matching ignores case, spaces
 and underscores, so `Password Ref` and `password_ref` are the same column. All

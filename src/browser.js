@@ -52,7 +52,28 @@ class Browser {
 
         logger.info("Opening:", url);
 
-        await this.page.goto(url, { waitUntil: "domcontentloaded" });
+        // A batch of same-host jobs runs back to back, so a short DNS or
+        // connection blip on this box would otherwise fail every remaining
+        // job in seconds. Wait for the network to come back instead.
+        const delays = [10000, 30000, 60000];
+
+        for (let attempt = 0; ; attempt++) {
+
+            try {
+                return await this.page.goto(url, { waitUntil: "domcontentloaded" });
+            } catch (error) {
+
+                if (attempt >= delays.length || !/net::ERR_(NAME_NOT_RESOLVED|CONNECTION_|TIMED_OUT|INTERNET_DISCONNECTED|NETWORK_CHANGED|ABORTED)/.test(error.message)) {
+                    throw error;
+                }
+
+                logger.warn(`Open failed (${error.message.split("\n")[0]}), retrying in ${delays[attempt] / 1000}s`);
+
+                await new Promise(resolve => setTimeout(resolve, delays[attempt]));
+
+            }
+
+        }
 
     }
 

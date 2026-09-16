@@ -72,7 +72,27 @@ function writeJson(file, data) {
 
     fs.writeFileSync(temp, JSON.stringify(data, null, 4));
 
-    fs.renameSync(temp, file);
+    // On Windows the rename fails with EPERM while something else (Defender,
+    // the search indexer, an editor) briefly holds the target open. The lock
+    // clears in milliseconds; a job must not fail over it.
+    for (let attempt = 0; ; attempt++) {
+
+        try {
+            return fs.renameSync(temp, file);
+        }
+        catch (error) {
+
+            if (attempt >= 5 || !["EPERM", "EBUSY", "EACCES"].includes(error.code)) {
+                throw error;
+            }
+
+            const until = Date.now() + 50 * (attempt + 1);
+
+            while (Date.now() < until) { /* sync caller, sync wait */ }
+
+        }
+
+    }
 
 }
 

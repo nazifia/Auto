@@ -227,6 +227,20 @@ class Agent {
 
                 this.siteMemory.record(page.host, "visits");
 
+                if (verifier.satisfied(goals.done(), page)) {
+
+                    logger.info(`✓ Goal already done: ${goal} (page shows "${goals.done()}")`);
+
+                    goals.complete("page already showed the done hint");
+
+                    learner.goalCompleted(page.host);
+
+                    recovery.progressed(goal);
+
+                    continue;
+
+                }
+
                 if (recovery.stuck(goal, page.signature)) {
 
                     await recovery.handleDeadEnd({

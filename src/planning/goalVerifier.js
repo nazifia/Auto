@@ -58,6 +58,24 @@ class GoalVerifier {
 
     }
 
+    // Strict form of check(): every word of the hint is on the page. Used to
+    // skip a goal the page already shows as done -- clicking "Run until 1
+    // month from today" when the date is already there changes nothing, and
+    // the planner would otherwise click until the dead-end detector gave up.
+    satisfied(hint, page) {
+
+        const words = tokens(hint || "");
+
+        if (words.length === 0) {
+            return false;
+        }
+
+        const haystack = GoalVerifier.haystack(page);
+
+        return words.every(word => haystack.includes(word));
+
+    }
+
     // Stateful gate around check(): returns whether to accept the claim.
     accept(goal, hint, page) {
 
