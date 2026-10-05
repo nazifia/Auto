@@ -179,6 +179,8 @@ class Agent {
             await browser.start();
             await browser.open(job.url);
 
+            const clicked = new Set();
+
             while (!goals.finished() && steps < this.maxSteps) {
 
                 steps++;
@@ -227,7 +229,7 @@ class Agent {
 
                 this.siteMemory.record(page.host, "visits");
 
-                if (verifier.satisfied(goals.done(), page)) {
+                if (!goals.step().always && verifier.satisfied(goals.done(), page)) {
 
                     logger.info(`✓ Goal already done: ${goal} (page shows "${goals.done()}")`);
 
@@ -326,6 +328,12 @@ class Agent {
                     actionCache
                 });
 
+                if (!result.error && plannedResult.actions.some(act => act.action === "click")) {
+
+                    clicked.add(goals.index);
+
+                }
+
                 page = result.page;
 
                 // Vision plans are not cached, so there is nothing to score.
@@ -371,6 +379,16 @@ class Agent {
 
                     // "finish" is a claim. Check it against the goal's own
                     // done-hint before believing it.
+                    // "always" goals exist to perform the click; a date already
+                    // on the page must not stand in for it.
+                    if (goals.step().always && !clicked.has(goals.index)) {
+
+                        feedback = "This goal requires you to click the button now, even if the page already shows the done state. Return the click action.";
+
+                        continue;
+
+                    }
+
                     const verdict = verifier.accept(goal, goals.done(), page);
 
                     if (!verdict.accepted) {
