@@ -41,7 +41,7 @@ module.exports = {
 
         model: process.env.AI_MODEL
             || process.env.OPENROUTER_MODEL
-            || "openai/gpt-oss-20b:free",
+            || "nvidia/nemotron-3.5-lightning:free",
 
         apiKey: process.env.OPENROUTER_API_KEY || process.env.AI_API_KEY,
 

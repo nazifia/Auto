@@ -7,7 +7,7 @@
         "goals": [
             { "goal": "Log in", "done": "Dashboard is visible" },
             { "goal": "Open the Web tab", "done": "Web app settings are visible" },
-            { "goal": "Click the Run until 3 months from today button", "done": "Expiry date moved forward" }
+            { "goal": "Click Run until 1 month from today", "done": "This site will be disabled on", "always": true }
         ],
         "variables": {
             "USERNAME": "${PA_USERNAME}",

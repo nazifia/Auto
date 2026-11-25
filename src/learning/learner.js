@@ -44,7 +44,8 @@ class Learner {
 
     planned(host, source) {
 
-        const field = source === "cache" ? "cacheHits" : "llmCalls";
+        // "direct" is the same economics as a cache hit: the LLM was not asked.
+        const field = ["cache", "direct"].includes(source) ? "cacheHits" : "llmCalls";
 
         this.statistics.add(field);
 

@@ -103,6 +103,21 @@ const CANVAS_PAGE = `<!doctype html>
     </script>
 </body></html>`;
 
+// A button whose only visible change is a date inside the page text. The
+// element set stays identical, so pageSignature does not move -- exactly the
+// PythonAnywhere "Run until 1 month from today" case.
+const EXPIRY_PAGE = `<!doctype html>
+<html><body>
+    <p id="expiry">This site will be disabled on <strong>5 December 2026</strong></p>
+    <button type="button" id="extend">Run until 1 month from today</button>
+    <script>
+        document.getElementById("extend").addEventListener("click", function () {
+            document.getElementById("expiry").innerHTML =
+                "This site will be disabled on <strong>24 December 2026</strong>";
+        });
+    </script>
+</body></html>`;
+
 function isolatedMemory(suffix) {
 
     return {
@@ -117,6 +132,75 @@ function isolatedMemory(suffix) {
     };
 
 }
+
+test("a click-only plan is completed by the page it leaves behind", async t => {
+
+    const file = scratch("expiry.html");
+
+    fs.writeFileSync(file, EXPIRY_PAGE);
+
+    const browser = new Browser({ headless: true, slowMo: 0 });
+
+    try {
+        await browser.start();
+    }
+    catch (error) {
+        t.skip(`Playwright browser unavailable: ${error.message}`);
+        return;
+    }
+
+    t.after(() => browser.close());
+
+    // What a real planner often returns: the click, and no "finish", because
+    // the done hint is not true of the page it was shown.
+    const clickOnly = {
+
+        calls: 0,
+
+        async plan(context) {
+
+            clickOnly.calls++;
+
+            return {
+                actions: [{
+                    action: "click",
+                    element: context.page.elements.find(e => e.text === "Run until 1 month from today")
+                }],
+                signature: context.page.signature,
+                source: "test"
+            };
+
+        },
+
+        record() {},
+        forget() {}
+
+    };
+
+    const agent = new Agent({
+        browser,
+        planner: clickOnly,
+        maxSteps: 6,
+        // keepOpen: the assertion below inspects the page after the job.
+        keepOpen: true,
+        ...isolatedMemory("expiry")
+    });
+
+    const result = await agent.runJob({
+        url: `file://${file.replace(/\\/g, "/")}`,
+        task: "Extend the web app",
+        goals: [{
+            goal: "Click Run until 1 month from today now - always click it, even if the page already shows the new date",
+            done: "This site will be disabled on 24 December 2026",
+            always: true
+        }]
+    });
+
+    assert.equal(result.ok, true, "the goal completed from the post-click page");
+    assert.equal(clickOnly.calls, 1, "one click was enough; it was not clicked again");
+    assert.match(await browser.page.locator("#expiry").innerText(), /24 December 2026/);
+
+});
 
 test("agent drives a real page from goal to completion", async t => {
 

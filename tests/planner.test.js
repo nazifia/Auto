@@ -6,6 +6,7 @@ const path = require("node:path");
 const MultiActionPlanner = require("../src/planning/multiActionPlanner");
 const PlanValidator = require("../src/planning/planValidator");
 const ConditionalPlanner = require("../src/planning/conditionalPlanner");
+const DirectPlanner = require("../src/planning/directPlanner");
 const PlannerCache = require("../src/memory/plannerCache");
 const Planner = require("../src/planner");
 
@@ -134,6 +135,95 @@ test("conditionalPlanner honours when-guards", () => {
     );
 
     assert.equal(conditional.shouldRun({ action: "click" }, PAGE), true);
+
+});
+
+test("directPlanner turns a uniquely named control into click + finish", () => {
+
+    const page = {
+        elements: [
+            { role: "button", text: "Run until 1 month from today" },
+            { role: "link", text: "Web" },
+            { role: "link", text: "Account" }
+        ]
+    };
+
+    const actions = new DirectPlanner().plan(
+        "Click Run until 1 month from today now - always click it, even if the page already shows the new date",
+        page
+    );
+
+    assert.equal(actions.length, 2);
+    assert.equal(actions[0].action, "click");
+    assert.equal(actions[0].element.text, "Run until 1 month from today");
+    assert.equal(actions[1].action, "finish");
+
+    // The "button" suffix and articles are prose, not part of the name.
+    const threeMonths = {
+        elements: [{ role: "button", text: "Run until 3 months from today" }]
+    };
+
+    assert.ok(
+        new DirectPlanner().plan("Click the Run until 3 months from today button", threeMonths)
+    );
+
+});
+
+test("directPlanner leaves ambiguity and non-click goals to the planner", () => {
+
+    const planner = new DirectPlanner();
+
+    const duplicated = {
+        elements: [
+            { role: "button", text: "Extend" },
+            { role: "button", text: "Extend" }
+        ]
+    };
+
+    assert.equal(planner.plan("Click Extend", duplicated), null, "two matches are ambiguous");
+    assert.equal(planner.plan("Open the Web tab", { elements: [] }), null, "not a click goal");
+    assert.equal(planner.plan("Click Extend", { elements: [] }), null, "no visible match");
+    assert.equal(
+        planner.plan("Click the button", { elements: [{ role: "button", text: "button" }] }),
+        null,
+        "a generic noun is not a control's name"
+    );
+    assert.equal(
+        planner.plan("Click Extend", { elements: [{ role: "button", text: "Extend", disabled: true }] }),
+        null,
+        "a disabled control is not clickable"
+    );
+
+});
+
+test("planner clicks an explicitly named button without calling the LLM", async () => {
+
+    const planner = new Planner({
+        plannerCache: new PlannerCache(tmp("planner-cache-direct.json")),
+        confidenceModel: { plan: () => 1, element: () => 1 },
+        multiActionPlanner: {
+            plan: async () => {
+                throw new Error("the goal names a visible button; the LLM must not be asked");
+            }
+        }
+    });
+
+    const page = {
+        ...PAGE,
+        elements: [
+            { role: "button", text: "Run until 1 month from today", fingerprint: "button|text:run until 1 month from today" }
+        ]
+    };
+
+    const result = await planner.plan({
+        goal: "Click Run until 1 month from today now - always click it, even if the page already shows the new date",
+        page,
+        variables: []
+    });
+
+    assert.equal(result.source, "direct");
+    assert.equal(result.actions[0].action, "click");
+    assert.equal(result.actions[1].action, "finish");
 
 });
 

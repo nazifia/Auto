@@ -10,11 +10,19 @@
                 "value": null,
                 "url": null,
                 "goal": "Open Web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today"
             }
         ],
-        "runs": 28,
-        "success": 28,
-        "updated": "2026-08-23T20:50:27.940Z"
+        "runs": 30,
+        "success": 30,
+        "updated": "2026-11-24T20:34:32.158Z"
     },
     "www.pythonanywhere.com::1xx30fl": {
         "host": "www.pythonanywhere.com",
@@ -67,11 +75,19 @@
                 "value": null,
                 "url": null,
                 "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
             }
         ],
-        "runs": 11,
-        "success": 11,
-        "updated": "2026-08-23T21:15:00.030Z"
+        "runs": 17,
+        "success": 14,
+        "updated": "2026-11-24T21:04:29.898Z"
     },
     "www.pythonanywhere.com::3ph7lc": {
         "host": "www.pythonanywhere.com",
@@ -129,5 +145,551 @@
         "runs": 1,
         "success": 1,
         "updated": "2026-08-23T20:55:36.081Z"
+    },
+    "www.pythonanywhere.com::e9sujl": {
+        "host": "www.pythonanywhere.com",
+        "task": "Keep the web app alive",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the Web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the Web tab"
+            },
+            {
+                "action": "wait",
+                "fingerprint": null,
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the Web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click the Run until 3 months from today button"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T19:28:47.416Z"
+    },
+    "www.pythonanywhere.com::ap01p8": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as aneeq and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T20:59:22.257Z"
+    },
+    "www.pythonanywhere.com::1j2eynk": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as albarkamedicine and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T21:00:11.947Z"
+    },
+    "www.pythonanywhere.com::14yl8jl": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as nazhms and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T21:00:36.926Z"
+    },
+    "www.pythonanywhere.com::1pn8jn3": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as roster and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T21:01:05.474Z"
+    },
+    "www.pythonanywhere.com::1vrdmra": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as bestrong and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T21:01:34.064Z"
+    },
+    "www.pythonanywhere.com::1v8trmt": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as pharmapp and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T21:02:19.430Z"
+    },
+    "www.pythonanywhere.com::1woqf68": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as yousrapharmacystores and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|id:id_web_app_link",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T21:02:47.317Z"
+    },
+    "www.pythonanywhere.com::1x1j5w0": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as healthinfo and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T21:03:35.228Z"
+    },
+    "www.pythonanywhere.com::7soxyq": {
+        "host": "www.pythonanywhere.com",
+        "task": "Log in as ppp and click Run until 1 month from today",
+        "steps": [
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-username",
+                "source": "USERNAME",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "fill",
+                "fingerprint": "input|id:id_auth-password",
+                "source": "PASSWORD",
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|id:id_next",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Enter the username and password then click Log in"
+            },
+            {
+                "action": "click",
+                "fingerprint": "link|text:open web tab",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Open the web tab"
+            },
+            {
+                "action": "click",
+                "fingerprint": "button|text:run until 1 month from today",
+                "source": null,
+                "value": null,
+                "url": null,
+                "goal": "Click Run until 1 month from today now - always click it, even if the page already shows the new date"
+            }
+        ],
+        "runs": 1,
+        "success": 1,
+        "updated": "2026-11-24T21:04:00.849Z"
     }
 }

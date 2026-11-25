@@ -328,13 +328,31 @@ class Agent {
                     actionCache
                 });
 
-                if (!result.error && plannedResult.actions.some(act => act.action === "click")) {
+                if (!result.error && result.clicked) {
 
                     clicked.add(goals.index);
 
                 }
 
                 page = result.page;
+
+                // A click is the one thing a single snapshot cannot confirm: by
+                // the time the plan returns, the page it left behind is the
+                // evidence. If it shows the goal's own done hint, the goal is
+                // complete -- waiting for the planner to also emit "finish" is
+                // how an idempotent button whose only visible change is a date
+                // got clicked again and again, then abandoned.
+                if (
+                    !result.goalComplete
+                    && !result.error
+                    && result.clicked
+                    && verifier.satisfied(goals.done(), page)
+                ) {
+
+                    result.goalComplete = true;
+                    result.note = `page shows "${goals.done()}"`;
+
+                }
 
                 // Vision plans are not cached, so there is nothing to score.
                 if (plannedResult.source !== "vision") {
@@ -538,6 +556,7 @@ class Agent {
         let goalComplete = false;
         let note = null;
         let error = null;
+        let clicked = false;
 
         for (const step of graph) {
 
@@ -589,6 +608,12 @@ class Agent {
 
                 await executor.execute(action);
 
+                // Only an action that actually ran counts. A conditional or
+                // repeated-step skip must not satisfy an "always" click goal.
+                if (action.action === "click" || action.action === "clickAt") {
+                    clicked = true;
+                }
+
                 actionCache.record(action, page.signature);
 
                 graph.done(step);
@@ -620,7 +645,7 @@ class Agent {
 
         logger.debug("Plan:", graph.summary());
 
-        return { page, goalComplete, note, error };
+        return { page, goalComplete, note, error, clicked };
 
     }
 

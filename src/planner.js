@@ -1,5 +1,6 @@
 const MultiActionPlanner = require("./planning/multiActionPlanner");
 const ConfidencePlanner = require("./planning/confidencePlanner");
+const DirectPlanner = require("./planning/directPlanner");
 const PlanValidator = require("./planning/planValidator");
 const PlannerCache = require("./memory/plannerCache");
 const ConfidenceModel = require("./knowledge/confidenceModel");
@@ -21,6 +22,8 @@ class Planner {
 
         this.llm = options.multiActionPlanner || new MultiActionPlanner(options.ai);
 
+        this.direct = options.directPlanner || new DirectPlanner();
+
         this.validator = options.planValidator || new PlanValidator();
 
         this.useCache = options.useCache ?? config.agent.useCache;
@@ -33,6 +36,25 @@ class Planner {
 
         const host = context.page.host;
         const goal = context.goal;
+
+        // Before the cache and before the LLM: a goal that names one visible
+        // control needs no planning. Keeping this first is deliberate -- a
+        // retired model, a rate limit or an API outage must not stop the click
+        // the job exists to perform.
+        const direct = this.direct.plan(goal, context.page);
+
+        if (direct) {
+
+            this.stats.cacheHits++;
+
+            return {
+                actions: direct,
+                signature: this.confidence.signature(context.page),
+                source: "direct",
+                confidence: 1
+            };
+
+        }
 
         if (this.useCache && !context.forceFresh) {
 
